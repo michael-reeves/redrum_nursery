@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-
   def index
   end
 
@@ -8,5 +7,4 @@ class StaticPagesController < ApplicationController
 
   def products_show
   end
-
 end
