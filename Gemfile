@@ -41,6 +41,9 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
 
+  gem 'better_errors'
+  gem 'awesome_print'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
