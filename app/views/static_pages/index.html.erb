@@ -1,4 +1,4 @@
-<!-- Header Carousel -->
+<!-- Header -->
 <header>
   <div class="main_image">
     <div class="container">
@@ -19,6 +19,7 @@
 
 <!-- Marketing Icons Section -->
   <!-- Call to Action Section -->
+  <br>
   <div class="well">
       <div class="row">
           <div class="col-md-8">
@@ -63,123 +64,15 @@
             </div>
         </div>
     </div>
-</div>
-<!-- /.row -->
+  </div><!-- /.row -->
 
 
-<!-- Portfolio Section -->
-<div class="row">
+  <!-- Featured Products Section -->
+  <div class="row">
 
+    <%= render "partials/product_carousel" %>
 
-
-
-</div>
-<!-- /.row -->
-<div class="container hidden-xs">
-  <div class="col-lg-12">
-      <h2 class="page-header featured">Featured Products</h2>
   </div>
-	<div class="col-md-12">
-      <div id="ClientCarousel" class="carousel slide">
 
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-
-      <div class="item active">
-      	<div class="row">
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$24.99</h4>
-                      <h4><a href="#">First Product</a>
-                      </h4>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$64.99</h4>
-                      <h4><a href="#">Second Product</a>
-                      </h4>
-
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$74.99</h4>
-                      <h4><a href="#">Third Product</a>
-                      </h4>
-                  </div>
-              </div>
-          </div>
-
-
-
-      	</div><!--.row-->
-      </div><!--.item-->
-
-      <div class="item">
-      	<div class="row">
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$24.99</h4>
-                      <h4><a href="#">Fourth Product</a>
-                      </h4>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$64.99</h4>
-                      <h4><a href="#">Fifth Product</a>
-                      </h4>
-
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                  <img src="http://placehold.it/320x250" alt="">
-                  <div class="caption">
-                      <h4 class="pull-right">$74.99</h4>
-                      <h4><a href="#">Sixth Product</a>
-                      </h4>
-                  </div>
-              </div>
-          </div>
-      	</div><!--.row-->
-      </div><!--.item-->
-
-      </div><!--.carousel-inner-->
-        <a data-slide="prev" href="#ClientCarousel" class="left carousel-control">‹</a>
-        <a data-slide="next" href="#ClientCarousel" class="right carousel-control">›</a>
-      </div><!--.Carousel-->
-
-		</div>
-</div>
-
-<hr>
-</div>
-<!-- /.container -->
-
-<script>
-  $(document).ready(function() {
-    $('#ClientCarousel').carousel({
-        interval: 5000
-    })
-});
-</script>
+  <hr>
+</div><!-- /.container -->

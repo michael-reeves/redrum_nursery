@@ -13,6 +13,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+.navbar {
+  font-weight: 400;
+}
+
 .page-header {
   border-bottom: none;
   color: white;
@@ -92,13 +96,13 @@ header.carousel .fill {
     background-size: cover;
 }
 
-#ClientCarousel .carousel, #ClientCarouselSm .carousel {
+#ProductCarousel .carousel, #ProductCarouselSm .carousel {
     margin-bottom: 0;
     padding: 0 40px 30px 40px;
 }
 
 /* The controlsy */
-#ClientCarousel .carousel-control, #ClientCarouselSm .carousel-control {
+#ProductCarousel .carousel-control, #ProductCarouselSm .carousel-control {
     height: 40px;
 	width: 40px;
     background: none repeat scroll 0 0 #222222;
@@ -108,7 +112,7 @@ header.carousel .fill {
 
 }
 
-#ClientCarousel .carousel-control.right, #ClientCarouselSm .carousel-control.right {
+#ProductCarousel .carousel-control.right, #ProductCarouselSm .carousel-control.right {
 	right: -12px;
 	height: 40px;
 	width: 40px;
@@ -120,7 +124,7 @@ header.carousel .fill {
 	color: #fff;
 }
 
-#ClientCarousel .carousel-control.left, #ClientCarouselSm .carousel-control.left {
+#ProductCarousel .carousel-control.left, #ProductCarouselSm .carousel-control.left {
 	left: -12px;
 	height: 40px;
 	width: 40px;
@@ -133,7 +137,7 @@ header.carousel .fill {
 }
 
 /* The indicators */
-#ClientCarousel .carousel-indicators, #ClientCarouselSm .carousel-indicators {
+#ProductCarousel .carousel-indicators, #ProductCarouselSm .carousel-indicators {
 	right: 50%;
 	top: auto;
 	bottom: 60px;
@@ -141,11 +145,11 @@ header.carousel .fill {
 }
 
 /* The colour of the indicators */
-#ClientCarousel .carousel-indicators li, #ClientCarouselSm .carousel-indicators li {
+#ProductCarousel .carousel-indicators li, #ProductCarouselSm .carousel-indicators li {
 	background: #cecece;
 }
 
-#ClientCarousel .carousel-indicators .active, #ClientCarouselSm .carousel-indicators .active {
+#ProductCarousel .carousel-indicators .active, #ProductCarouselSm .carousel-indicators .active {
 background: #428bca;
 }
 

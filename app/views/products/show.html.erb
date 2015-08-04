@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="page-header featured">
+    <h1>Sample Product</h1>
+  </div>
+
+  <div class="row">
+
+    <div class="thumbnail col-md-12">
+      <img class="img-responsive col-md-5" src="http://placehold.it/640x500" alt="">
+      <div class="caption-full col-md-7">
+        <h4><a href="#">Product Name</a>
+        </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <h4 class="pull-left">$24.99</h4>
+          <%= button_tag 'Add to Cart', class: 'btn btn-primary btn-lg pull-right' %>
+        </div>
+      </div>
+    </div> <!-- /.row -->
+    <%= render "partials/product_carousel" %>
+
+  </div> <!-- /.container -->

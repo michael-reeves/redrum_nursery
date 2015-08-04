@@ -8,13 +8,11 @@
 </head>
 <body>
   <!-- Navigation -->
-    <%= render partial: 'navigation' %>
+  <%= render partial: 'layouts/navigation' %>
 
+  <%= yield %>
 
-      <%= yield %>
-
-      <%= render partial: 'footer' %>
-    
+  <%= render partial: 'layouts/footer' %>
 
 </body>
 </html>
