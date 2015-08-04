@@ -1,0 +1,201 @@
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 42px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+.page-header {
+  border-bottom: none;
+  color: white;
+  font-weight: 500;
+  float: right;
+}
+
+.featured {
+  color: black;
+  float: none;
+}
+.main_image {
+  background: url('http://f.fwallpapers.com/images/dew-drops-carnivorous-plant.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 362px;
+}
+
+#index-foods, #index-accessories, #index-plants {
+  background: no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 200px;
+
+  .btn {
+    margin-top: 130px;
+  }
+}
+
+#index-foods {
+  background: url('frog-in-pitcher-plant.jpg') no-repeat center center;
+  background-size: 100%;
+}
+
+#index-plants {
+  background: url('venus_flytrap.jpg') no-repeat center center;
+  background-size: 100%;
+}
+
+#index-accessories {
+  background: url('planters.jpg') no-repeat center center;
+  background-size: 100%;
+}
+
+#index-foods btn, #index-accessories, #index-plants {
+  height: 200px;
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+#ClientCarousel .carousel, #ClientCarouselSm .carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+
+/* The controlsy */
+#ClientCarousel .carousel-control, #ClientCarouselSm .carousel-control {
+    height: 40px;
+	width: 40px;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    margin-top: 90px;
+
+}
+
+#ClientCarousel .carousel-control.right, #ClientCarouselSm .carousel-control.right {
+	right: -12px;
+	height: 40px;
+	width: 40px;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    margin-top: 6%;
+	font-size: 20px;
+	color: #fff;
+}
+
+#ClientCarousel .carousel-control.left, #ClientCarouselSm .carousel-control.left {
+	left: -12px;
+	height: 40px;
+	width: 40px;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    margin-top: 6%;
+	font-size: 20px;
+	color:#fff;
+}
+
+/* The indicators */
+#ClientCarousel .carousel-indicators, #ClientCarouselSm .carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 60px;
+	margin-right: -19px;
+}
+
+/* The colour of the indicators */
+#ClientCarousel .carousel-indicators li, #ClientCarouselSm .carousel-indicators li {
+	background: #cecece;
+}
+
+#ClientCarousel .carousel-indicators .active, #ClientCarouselSm .carousel-indicators .active {
+background: #428bca;
+}
+
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+    margin: 50px 0;
+}
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+}

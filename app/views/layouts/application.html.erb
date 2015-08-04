@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RedrumNursery</title>
+  <title>Redrum Nursery</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- Navigation -->
+    <%= render partial: 'navigation' %>
 
-<%= yield %>
+
+      <%= yield %>
+
+      <%= render partial: 'footer' %>
+    
 
 </body>
 </html>
