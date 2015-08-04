@@ -1,0 +1,212 @@
+// Global Styles
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 42px; // Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+.navbar {
+  font-weight: 400;
+}
+
+.page-header {
+  border: 0;
+  color: #fff;
+  float: right;
+  font-weight: 500;
+}
+
+.featured {
+  color: #000;
+  float: none;
+}
+
+.main-image {
+  background: url("dew-drops-carnivorous-plant.jpg") no-repeat center center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 362px;
+}
+
+#index-foods,
+#index-accessories,
+#index-plants {
+  background: no-repeat center center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 200px;
+
+  .btn {
+    margin-top: 130px;
+  }
+}
+
+#index-foods {
+  background-image: url("frog-in-pitcher-plant.jpg");
+}
+
+#index-plants {
+  background-image: url("venus_flytrap.jpg");
+}
+
+#index-accessories {
+  background-image: url("planters.jpg");
+}
+
+.img-portfolio {
+  margin-bottom: 30px;
+}
+
+.img-hover:hover {
+  opacity: 0.8;
+}
+
+// Home Page Carousel
+
+.carousel {
+  height: 50%;
+
+  .fill {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.carousel .item,
+.carousel .item.active,
+.carousel .carousel-inner {
+  height: 100%;
+}
+
+#product-carousel .carousel,
+#product-carousel-sm .carousel {
+  margin-bottom: 0;
+  padding: 0 40px 30px;
+}
+
+// The controlsy
+#product-carousel .carousel-control,
+#product-carousel-sm .carousel-control {
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #ffffff;
+  border-radius: 23px;
+  height: 40px;
+  margin-top: 90px;
+  width: 40px;
+}
+
+#product-carousel .carousel-control.right,
+#product-carousel-sm .carousel-control.right {
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #ffffff;
+  border-radius: 23px;
+  color: #ffffff;
+  font-size: 20px;
+  height: 40px;
+  margin-top: 6%;
+  right: -12px;
+  width: 40px;
+}
+
+#product-carousel .carousel-control.left,
+#product-carousel-sm .carousel-control.left {
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #ffffff;
+  border-radius: 23px;
+  color: #ffffff;
+  font-size: 20px;
+  height: 40px;
+  left: -12px;
+  margin-top: 6%;
+  width: 40px;
+}
+
+// The indicators
+#product-carousel .carousel-indicators,
+#product-carousel-sm .carousel-indicators {
+  bottom: 60px;
+  margin-right: -19px;
+  right: 50%;
+  top: auto;
+}
+
+// The colour of the indicators
+#product-carousel .carousel-indicators li,
+#product-carousel-sm .carousel-indicators li {
+  background: #cecece;
+}
+
+#product-carousel .carousel-indicators .active,
+#product-carousel-sm .carousel-indicators .active {
+  background: #428bca;
+}
+
+
+// 404 Page Styles
+
+.error-404 {
+  font-size: 100px;
+}
+
+// Pricing Page Styles
+
+.price {
+  display: block;
+  font-size: 50px;
+  line-height: 50px;
+
+  sup {
+    font-size: 20px;
+    left: 2px;
+    top: -20px;
+  }
+}
+
+.period {
+  display: block;
+  font-style: italic;
+}
+
+// Footer Styles
+
+footer {
+  margin: 50px 0;
+}
+
+// Responsive Styles
+
+@media(max-width:991px) {
+  .customer-img,
+  .img-related {
+    margin-bottom: 30px;
+  }
+}
+
+@media(max-width:767px) {
+  .img-portfolio {
+    margin-bottom: 15px;
+  }
+
+  .carousel .carousel {
+    height: 70%;
+  }
+}

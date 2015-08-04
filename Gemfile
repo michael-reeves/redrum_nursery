@@ -9,6 +9,7 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 # Use Bootstrap
 gem 'bootstrap-sass', '~>3.3.5'
+gem 'bootswatch-sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -39,6 +40,9 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
+
+  gem 'better_errors'
+  gem 'awesome_print'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
