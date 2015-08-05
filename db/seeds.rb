@@ -161,7 +161,7 @@ Product.create(
   category_id: food.id
 )
 Product.create(
-  name: "Metalic Beetles",
+  name: "Metallic Beetles",
   description: "Shiny! Blue! Alive! Test your plant's skills!",
   image_url: "food/beetles.jpg",
   price: 13.99,
@@ -188,7 +188,7 @@ Product.create(
   description: "Let your plants do your dirty work for you.",
   image_url: "accessories/7-living-plant-accessories.jpg",
   price: 29.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Osmoform Fertilizer",
@@ -196,14 +196,14 @@ Product.create(
     " Or is it?",
   image_url: "accessories/fertilizer.jpg",
   price: 59.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Thunderdome",
   description: "Do Mad Max proud. Two plants go in; one comes out.",
   image_url: "accessories/geodome.jpg",
   price: 39.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Terrarium of Horrors Kit",
@@ -211,14 +211,14 @@ Product.create(
     " terrarium kit. Makes a great gift!",
   image_url: "accessories/kit.jpg",
   price: 39.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "My Precious...",
   description: "Watch out! Is that Smeagol behind you?",
   image_url: "accessories/ring-pots.jpg",
   price: 24.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Dragon Glass",
@@ -226,19 +226,19 @@ Product.create(
     " plants will love em!",
   image_url: "accessories/rocks.jpg",
   price: 19.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Bloody Plant Soil",
   description: "Straight from the grounds of England. 99% mad cow disease free!",
   image_url: "accessories/soil.jpg",
   price: 34.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
 Product.create(
   name: "Pot O Death",
   description: "Get your killer plants on with our starter kit!",
   image_url: "accessories/terrarium-pot.jpg",
   price: 24.99,
-  category_id: accessory.id
+  category_id: accessories.id
 )
