@@ -210,3 +210,15 @@ footer {
     height: 70%;
   }
 }
+
+@media(min-width:768px) {
+  .thumbnail {
+    height: 340px;
+  }
+}
+
+@media(min-width:990px) {
+  .thumbnail {
+    height: 405px;
+  }
+}

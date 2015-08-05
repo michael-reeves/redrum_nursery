@@ -1,6 +1,4 @@
-
-
-<div class="row carousel-holder">
+<!--<div class="row carousel-holder">
   <div class="col-md-12">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -27,7 +25,7 @@
       </a>
     </div>
   </div>
-</div>
+  </div>-->
 
 
 <div class="container">
@@ -37,147 +35,8 @@
   </div>
 
   <div class="row">
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$84.99</h4>
-            <h4>First Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">6 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$94.99</h4>
-            <h4>Second Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">18 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-
-        </div>
-      </a>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$94.99</h4>
-            <h4>Third Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">18 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$84.99</h4>
-            <h4>Fourth Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">6 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$94.99</h4>
-            <h4>Fifth Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">18 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-
-        </div>
-      </a>
-    </div>
-
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <a href="#">
-        <div class="thumbnail">
-          <img src="http://placehold.it/320x150" alt="">
-          <div class="caption">
-            <h4 class="pull-right">$94.99</h4>
-            <h4>Sixth Product</h4>
-            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">18 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-
+    <%= render partial: "partials/product_thumbnail", collection: @products,
+      as: :product %>
   </div> <!-- end row -->
 
 </div> <!-- end container -->
