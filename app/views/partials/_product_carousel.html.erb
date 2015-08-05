@@ -12,73 +12,13 @@
 
         <div class="item active">
           <div class="row">
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$24.99</h4>
-                  <h4><a href="#">First Product</a></h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$64.99</h4>
-                  <h4><a href="#">Second Product</a></h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$74.99</h4>
-                  <h4><a href="#">Third Product</a></h4>
-                </div>
-              </div>
-            </div>
-
+            <%= render partial: "partials/carousel_item", collection: @featured_products[0..2], as: :featured_product %>
           </div><!--.row-->
         </div><!--.item-->
 
         <div class="item">
           <div class="row">
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$24.99</h4>
-                  <h4><a href="#">Fourth Product</a></h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$64.99</h4>
-                  <h4><a href="#">Fifth Product</a></h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4 col-lg-4 col-md-4">
-              <div class="thumbnail">
-                <img src="http://placehold.it/320x250" alt="">
-                <div class="caption">
-                  <h4 class="pull-right">$74.99</h4>
-                  <h4><a href="#">Sixth Product</a></h4>
-                </div>
-              </div>
-            </div>
-
+            <%= render partial: "partials/carousel_item", collection: @featured_products[3..5], as: :featured_product %>
           </div><!--.row-->
         </div><!--.item-->
 

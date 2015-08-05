@@ -29,7 +29,7 @@ plants.products.create(
   name: "Bloody Creeper",
   description: "Give this plant plenty of room to creep. One of our best" \
     " sellers!",
-  image_url: "plants/green-bulb.jpb",
+  image_url: "plants/green-bulb.jpg",
   price: 29.99
 )
 plants.products.create(
@@ -53,7 +53,7 @@ plants.products.create(
   price: 39.99
 )
 plants.products.create(
-  name: "One Eyed Purple People Eater",
+  name: "Purple People Eater",
   description: "You won't miss the horn on this beautiful People Eater!",
   image_url: "plants/dew-drops-carnivorous-plant.jpg",
   price: 49.99
@@ -101,7 +101,7 @@ plants.products.create(
 food.products.create(
   name: "Tropical Flies",
   description: "When local isn't good enough for your plant!",
-  image_url: "food/tips-on-growing-carnivorouos-plants1.jpg",
+  image_url: "food/tips-on-growing-carnivorous-plants1.jpg",
   price: 29.99
  )
 food.products.create(
