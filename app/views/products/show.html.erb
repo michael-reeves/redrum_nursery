@@ -9,9 +9,9 @@
       <div class="caption-full col-md-7">
         <h3><%= @product.name %></h3>
         <p><%= @product.description %></p>
-        <h4 class="pull-left">$<%= @product.price %></h4>
+        <h4>$<%= @product.price %></h4><br>
         <%= button_to "Add to Cart", cart_items_path(product_id: @product.id),
-            class: "btn btn-primary btn-lg pull-right" %>
+            class: "btn btn-primary btn-lg" %>
       </div>
     </div>
   </div> <!-- /.row -->
