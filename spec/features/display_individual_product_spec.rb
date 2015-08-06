@@ -17,8 +17,10 @@ feature "a visitor" do
       expect(page).to have_content("This is the description for plant 1")
       expect(page).to have_content("19.99")
       expect(page).to have_xpath("//img[@src=\"/assets/plants/plant-2.jpg\"]")
+
       within(".caption-full") do
-        expect(page).to have_content("Add to Cart")
+        expect(page).to have_xpath(
+          "//input[@value=\"Add to Cart\"]")
       end
     end
 
