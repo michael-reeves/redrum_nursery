@@ -212,13 +212,19 @@ footer {
 }
 
 @media(min-width:768px) {
-  .thumbnail {
+  .product-card.thumbnail  {
     height: 340px;
+  }
+  .feature-card.thumbnail {
+    height: 250px;
   }
 }
 
 @media(min-width:990px) {
-  .thumbnail {
+  .product-card.thumbnail {
     height: 405px;
+  }
+  .feature-card.thumbnail {
+    height: 330px;
   }
 }
