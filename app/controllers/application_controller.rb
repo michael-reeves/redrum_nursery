@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def load_featured_products
     @featured_products = Product.limit(6).order("RANDOM()")
   end
+
+  def cart
+    @cart ||= Cart.new(session[:cart])
+  end
 end

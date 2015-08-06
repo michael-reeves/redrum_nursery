@@ -2,99 +2,36 @@
   <h1 class="text-center">Cart</h1>
 
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
-          <td colspan=1></td>
-          <td colspan=1>Product</td>
-          <td>Price</td>
-          <td>Quantity</td>
-          <td>Total</td>
-          <td colspan=1></td>
+          <th>&nbsp;</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
+        <% @cart_items.each do |cart_item| %>
         <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <td><%= image_tag cart_item.image_url, class: "img-responsive col-md-12" %></td>
+          <td class="name col-md-4">
+            <%= cart_item.name %><br>
+            <%= cart_item.description %>
+          </td>
+          <td class="item-total col-md-2">$<%= cart_item.price %></td>
+          <td class="col-md-1 quantity"> <%= cart_item.quantity %></td>
+          <td class="col-md-1">$<%= cart_item.item_total %></td>
+          <td class="col-md-1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </td>
         </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-        </tr>
-        <tr>
-          <td><img src="//placehold.it/100x100"></td>
-          <td>Title<br>Description of the product that you want</td>
-          <td>$25.00</td>
-          <td><select class="form-control"><option>1</option><option>2</option><option>3</option></select></td>
-          <td>$50.00</td>
-          <td>
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </td>
-        </tr>
+        <% end %>
         <tr>
           <td colspan=3></td>
           <th>Total</th>
-          <th>$300.00</th>
+          <th class="total">$<%= @cart.total_price %></th>
         </tr>
       </tbody>
 

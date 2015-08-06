@@ -10,7 +10,8 @@
         <h3><%= @product.name %></h3>
         <p><%= @product.description %></p>
         <h4 class="pull-left">$<%= @product.price %></h4>
-        <%= button_tag 'Add to Cart', class: 'btn btn-primary btn-lg pull-right' %>
+        <%= button_to "Add to Cart", cart_items_path(product_id: @product.id),
+            class: "btn btn-primary btn-lg pull-right" %>
       </div>
     </div>
   </div> <!-- /.row -->
