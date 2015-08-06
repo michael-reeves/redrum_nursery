@@ -35,7 +35,7 @@ h6 {
 }
 
 .main-image {
-  background: url("dew-drops-carnivorous-plant.jpg") no-repeat center center;
+  background: url(image-path("dew-drops-carnivorous-plant.jpg")) no-repeat center center;
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
@@ -59,15 +59,15 @@ h6 {
 }
 
 #index-foods {
-  background-image: url("frog-in-pitcher-plant.jpg");
+  background-image: url(image-path("frog-in-pitcher-plant.jpg"));
 }
 
 #index-plants {
-  background-image: url("venus_flytrap.jpg");
+  background-image: url(image-path("venus_flytrap.jpg"));
 }
 
 #index-accessories {
-  background-image: url("planters.jpg");
+  background-image: url(image-path("planters.jpg"));
 }
 
 .img-portfolio {
