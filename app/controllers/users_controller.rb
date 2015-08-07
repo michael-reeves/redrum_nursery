@@ -10,14 +10,14 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Redrum Nursery," \
         " #{@user.first_name} #{@user.last_name}!"
 
-      redirect_to dashboard_path(user_id: @user.id)
+      redirect_to dashboard_path
     else
-      # TODO: Add sad path
+      flash.now[:warning] = @user.errors.full_messages.join(". ")
+      render :new
     end
   end
 
   def show
-    @user = User.find(params[:user_id])
   end
 
   private
