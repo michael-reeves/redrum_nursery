@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 20150807000528) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.text     "username"
+    t.text     "email"
     t.text     "password_digest"
     t.text     "first_name"
     t.text     "last_name"
-    t.integer  "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "role",            default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "products", "categories"
