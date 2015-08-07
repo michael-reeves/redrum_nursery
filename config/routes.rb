@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   get "/cart", to: "cart_items#index"
   post "/cart_items", to: "cart_items#create"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 end

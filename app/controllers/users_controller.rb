@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
       redirect_to dashboard_path(user_id: @user.id)
     else
-      #TODO: Add sad path
+      # TODO: Add sad path
     end
   end
 
