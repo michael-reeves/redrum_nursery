@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+  <%= f.label :first_name, "First Name" %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name, "Last Name" %>
+  <%= f.text_field :last_name %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.submit "Create Account" %>
+<% end %>
