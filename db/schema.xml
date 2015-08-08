@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="100" y="100" name="users">
+</datatypes><table x="104" y="261" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -60,41 +60,17 @@
 <row name="last_name" null="0" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>'NULL'</default></row>
-<row name="billing_street_1" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
-<row name="billing_city" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="billing_state" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="billing_zip" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="billing_country" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="shipping_street_1" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="shipping_city" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="shipping_state" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="shipping_zip" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="shipping_country" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="300" y="250" name="products">
+<table x="671" y="266" name="products">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -111,26 +87,27 @@
 <row name="image_url" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
-<row name="price" null="1" autoincrement="0">
+<row name="unit_price" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="100" y="550" name="invoices">
+<table x="301" y="262" name="orders">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="product_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="quantity" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="status" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
@@ -144,7 +121,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="300" y="100" name="categories">
+<table x="828" y="271" name="categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -154,19 +131,42 @@
 <row name="description" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="250" y="550" name="invoice_items">
+<table x="486" y="267" name="order_items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="order_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="orders" row="id" />
+</row>
 <row name="product_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="products" row="id" />
+</row>
 <row name="quantity" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="unit_price" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
