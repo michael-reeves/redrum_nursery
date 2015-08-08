@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :categories, param: :slug, only: [:show]
 
   get "/cart", to: "cart_items#index"
-  post "/cart_items", to: "cart_items#create"
+  resources :cart_items, only: [:create, :update]
 end
