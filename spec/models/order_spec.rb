@@ -3,12 +3,12 @@ require "rails_helper"
 RSpec.describe Order, type: :model do
   before do
     user = User.create(first_name: "Jane",
-                    last_name:  "Doe",
-                    email:      "jane@doe.com",
-                    password:   "password")
+                       last_name:  "Doe",
+                       email:      "jane@doe.com",
+                       password:   "password")
 
     @order = Order.create(user_id: user.id,
-                 status: "Ordered")
+                          status: "Ordered")
   end
 
   it "belongs to a user" do
