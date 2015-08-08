@@ -44,7 +44,7 @@
         </li>
         <% if current_user %>
         <li>
-          <%= link_to "Logout", logout_path %>
+          <%= link_to "Logout", logout_path, method: :delete %>
         </li>
         <% else %>
         <li>
