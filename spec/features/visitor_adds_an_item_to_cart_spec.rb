@@ -59,7 +59,6 @@ feature "Visitor adds an item to their cart" do
       expect(page).to have_content("Food 3")
       expect(page).to have_content("1")
       expect(page).to have_content("$39.99")
-
     end
   end
 end
