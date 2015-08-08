@@ -1,10 +1,10 @@
 require "rails_helper"
 require "factory_helper"
 
-feature "Visitor adds an item to their cart" do
+feature "Visitor" do
   before { build_products }
 
-  context "not logged in with an empty cart" do
+  context "who is not logged in with an empty cart" do
     scenario "adds one item to cart twice" do
       item1 = @plants.products.first
 
@@ -33,7 +33,6 @@ feature "Visitor adds an item to their cart" do
       within(".total") do
         expect(page).to have_content("$39.98")
       end
-
     end
 
     scenario "adds two items to the cart" do
@@ -54,13 +53,19 @@ feature "Visitor adds an item to their cart" do
       find("#cart").click
 
       expect(current_path).to eq(cart_path)
-      expect(page).to have_content("Plant 1")
-      expect(page).to have_content("2")
-      expect(page).to have_content("$39.98")
+      within(".row", text: "Plant 1") do
+        expect(page).to have_content("Plant 1")
+        quantity = find(".quantity").value
+        expect(quantity).to eq("2")
+        expect(page).to have_content("$39.98")
+      end
 
-      expect(page).to have_content("Food 3")
-      expect(page).to have_content("1")
-      expect(page).to have_content("$39.99")
+      within(".row", text: "Food 3") do
+        expect(page).to have_content("Food 3")
+        quantity = find(".quantity").value
+        expect(quantity).to eq("1")
+        expect(page).to have_content("$39.99")
+      end
     end
 
     scenario "adds two items and updates the quantity of one" do
@@ -88,6 +93,43 @@ feature "Visitor adds an item to their cart" do
 
       within(".total") do
         expect(page).to have_content("$119.95")
+      end
+    end
+
+    scenario "adds an item twice and then decreases the quantity to one" do
+      item1 = @plants.products.first
+      visit product_path(item1)
+      click_button "Add to Cart"
+      click_button "Add to Cart"
+
+      find("#cart").click
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("2")
+        expect(page).to have_content("$39.98")
+      end
+
+      within(".total") do
+        expect(page).to have_content("$39.98")
+      end
+
+      within(".row", text: "Plant 1") do
+        find(".quantity").set("1")
+        click_button("update")
+      end
+
+      expect(current_path).to eq(cart_path)
+
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("1")
+        within(".sub-total") do
+          expect(page).to have_content("$19.99")
+        end
+      end
+
+      within(".total") do
+        expect(page).to have_content("$19.99")
       end
     end
   end
