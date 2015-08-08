@@ -25,13 +25,15 @@ feature "Visitor adds an item to their cart" do
         expect(page).to have_content("Plant 1")
       end
 
-      within(".quantity") do
-        expect(page).to have_content("2")
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("2")
       end
 
       within(".total") do
         expect(page).to have_content("$39.98")
       end
+
     end
 
     scenario "adds two items to the cart" do
@@ -59,7 +61,34 @@ feature "Visitor adds an item to their cart" do
       expect(page).to have_content("Food 3")
       expect(page).to have_content("1")
       expect(page).to have_content("$39.99")
+    end
 
+    scenario "adds two items and updates the quantity of one" do
+      item1 = @plants.products.first
+      item2 = @food.products.last
+      visit product_path(item1)
+      click_button "Add to Cart"
+      visit product_path(item2)
+      click_button "Add to Cart"
+
+      find("#cart").click
+
+      within(".row", text: "Plant 1") do
+        find(".quantity").set("4")
+        click_button("update")
+      end
+
+      expect(current_path).to eq(cart_path)
+
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("4")
+        expect(page).to have_content("$79.96")
+      end
+
+      within(".total") do
+        expect(page).to have_content("$119.95")
+      end
     end
   end
 end
