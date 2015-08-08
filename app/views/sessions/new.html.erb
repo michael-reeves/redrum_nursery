@@ -1,0 +1,17 @@
+<div class="container">
+  <h3 class="text-center">Welcome Back to Redrum Nursery!</h3>
+  <p class="lead text-center">Login</p>
+  <div class="well col-sm-6 col-sm-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "Password (min 8 characters)" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+      <%= f.submit "Login", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
