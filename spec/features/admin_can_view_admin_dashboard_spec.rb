@@ -3,10 +3,10 @@ require "rails_helper"
 feature "Admin can view Admin Dashboard" do
   scenario "Admin logs in and sees Admin Dashboard for /admin/dashboard" do
     User.create(first_name: "Admin",
-                        last_name: "Admin",
-                        email: "admin@admin.com",
-                        password: "password",
-                        role: 1)
+                last_name: "Admin",
+                email: "admin@admin.com",
+                password: "password",
+                role: 1)
 
     visit "/login"
 
@@ -22,10 +22,10 @@ feature "Admin can view Admin Dashboard" do
 
   scenario "Non-admin logs in and sees 404 page for /admin/dashboard" do
     User.create(first_name: "Jane",
-                        last_name: "Doe",
-                        email: "jane@doe.com",
-                        password: "password",
-                        role: 0)
+                last_name: "Doe",
+                email: "jane@doe.com",
+                password: "password",
+                role: 0)
 
     visit "/login"
 
