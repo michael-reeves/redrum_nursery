@@ -132,5 +132,38 @@ feature "Visitor" do
         expect(page).to have_content("$19.99")
       end
     end
+
+    xscenario "adds an item and then clicks the remove link" do
+      item1 = @plants.products.first
+      visit product_path(item1)
+      click_button "Add to Cart"
+
+      find("#cart").click
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("1")
+        expect(page).to have_content("$19.99")
+      end
+
+      within(".total") do
+        expect(page).to have_content("$19.99")
+      end
+
+      within(".row", text: "Plant 1") do
+        click_button("remove")
+      end
+
+      expect(current_path).to eq(cart_path)
+      expect(page).to have_content("Successfully removed Plant 1 from your" \
+        "cart")
+      expect(page).to have_link("Plant 1")
+      expect(page).to have_xpath("//a[@href=\"/products/1\"]")
+
+      expect(page).not_to have_content("This is the description for plant 1")
+
+      within(".total") do
+        expect(page).not_to have_content("$19.99")
+      end
+    end
   end
 end
