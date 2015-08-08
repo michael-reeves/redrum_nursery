@@ -13,19 +13,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>July 4, 2015</td>
-          <td>3987230</td>
-          <td>Ordered</td>
-          <td>$56.45</td>
-          <td>
-            <a href="#" class="">
-              <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
-              </span>
-              View Order Details
-            </a>
-          </td>
-        </tr>
+        <% current_user.orders.each do |order| %>
+          <tr>
+            <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+            <td><%= order.user_id %></td>
+            <td><%= order.status %></td>
+            <td>$<%= order.total %></td>
+            <td>
+              <a href="#" class="">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
+                </span>
+                View Order Details
+              </a>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 

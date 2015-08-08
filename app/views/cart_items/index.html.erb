@@ -38,5 +38,6 @@
     </table>
 
   </div>
-  <%= button_tag "Continue Shopping", class: "btn btn-lg btn-primary" %> <%= button_tag "Checkout", class: "btn btn-lg btn-success pull-right" %>
+  <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
+  <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
 </div><!-- /.container -->
