@@ -50,4 +50,16 @@ feature "an admin can create products" do
     end
     expect(current_path).to eq(admin_dashboard_path)
   end
+
+  scenario "admin can create a new Product with no image url" do
+    fill_in "Name", with: "Richard Plant"
+    fill_in "Description", with: "A boat on a lot."
+    fill_in "Price", with: "12.99"
+    select "Plants", from: "product[category_id]"
+    click_button "Add Product"
+
+    visit products_path
+
+    page.find(".img-responsive")["src"].should have_content "default_image.jpg"
+  end
 end
