@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if current_user == nil
+    if current_user.nil?
       flash[:warning] = "Please login before checking out."
       redirect_to login_path
-    elsif cart.items.size == 0
+    elsif cart.items.empty?
       flash[:warning] = "Add an item to your cart before checking out."
       redirect_to products_path
     else
