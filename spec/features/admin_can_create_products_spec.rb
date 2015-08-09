@@ -17,11 +17,11 @@ feature "an admin can create products" do
     visit "/admin/dashboard"
 
     Category.create(name: "Plants",
-                    description: "osidfg",
-                    slug: "category")
+                    description: "Plants category description",
+                    slug: "plants")
     Category.create(name: "Food",
-                    description: "osidfasdfg",
-                    slug: "category")
+                    description: "Food category description",
+                    slug: "food")
 
     click_link "Add Product"
   end
@@ -38,8 +38,6 @@ feature "an admin can create products" do
   end
 
   scenario "admin can create a new Product" do
-
-
     fill_in "Name", with: "Richard Plant"
     fill_in "Description", with: "A boat on a lot."
     fill_in "Price", with: "12.99"
