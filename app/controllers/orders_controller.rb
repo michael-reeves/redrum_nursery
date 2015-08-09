@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
     if current_user == nil
       flash[:warning] = "Please login before checking out."
       redirect_to login_path
+    elsif cart.items.size == 0
+      flash[:warning] = "Add an item to your cart before checking out."
+      redirect_to products_path
     else
       create_order_and_order_items
       clear_cart_and_session_cart

@@ -48,12 +48,30 @@ feature "Existing user places an order" do
   end
 
   context "as a visitor, before logging in" do
-    scenario "he is required to login after clicking checkout" do
+    scenario "user is required to login after clicking checkout" do
       visit cart_path
       click_button("Checkout")
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Please login before checking out.")
+    end
+  end
+
+  context "while logged in with an empty cart" do
+    scenario "user is redirected to products page" do
+      user = User.create(first_name: "Jane",
+                         last_name:  "Doe",
+                         email:      "jane@gmail.com",
+                         password:   "password")
+
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user).and_return(user)
+      
+      visit cart_path
+      click_button("Checkout")
+
+      expect(current_path).to eq(products_path)
+      expect(page).to have_content("Add an item to your cart before checking out.") 
     end
   end
 end
