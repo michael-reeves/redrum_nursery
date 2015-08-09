@@ -36,4 +36,8 @@ class Cart
       total + cart_item.item_total
     end
   end
+  
+  def clear
+    @data = Hash.new
+  end
 end
