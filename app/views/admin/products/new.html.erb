@@ -2,7 +2,7 @@
   <h3 class="text-center">Admin Panel</h3>
   <p class="lead text-center">Add a New Product</p>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for(@product) do |f| %>
+    <%= form_for @product, :url => admin_products_path, :html => {method: :post} do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <%= f.label :category %>
-      <%= collection_select :category, :category_id, Category.all, :id, :name %>
+      <%= collection_select :product, :category_id, Category.all, :id, :name %>
     </div>
     <div class="form-group">
       <%= f.label :image_url, "Image Url" %>

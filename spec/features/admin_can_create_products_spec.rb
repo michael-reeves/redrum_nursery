@@ -43,13 +43,13 @@ feature "an admin can create products" do
     fill_in "Name", with: "Richard Plant"
     fill_in "Description", with: "A boat on a lot."
     fill_in "Price", with: "12.99"
-    select "Plants", from: "category[category_id]"
+    select "Plants", from: "product[category_id]"
     fill_in "Image Url", with: "image_url"
     click_button "Add Product"
 
-    expect(current_path).to (admin_dashboard_path)
     within(".alert-success") do
-      endexpect(page).to have_content("Richard Plant has been added.")
+      expect(page).to have_content("Richard Plant has been added.")
     end
+    expect(current_path).to eq(admin_dashboard_path)
   end
 end
