@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   namespace :admin do
-    get "/dashboard", to: "users#index"
+    get "/dashboard", to: "admins#index"
+    resources :products
   end
 end
