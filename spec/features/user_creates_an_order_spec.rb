@@ -20,8 +20,11 @@ feature "Existing user places an order" do
       user_cart.add_item(product_1)
       user_cart.add_item(product_2)
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      allow_any_instance_of(ApplicationController).to receive(:cart).and_return(user_cart)
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user).and_return(user)
+
+      allow_any_instance_of(ApplicationController)
+        .to receive(:cart).and_return(user_cart)
     end
 
     scenario "successfully places an order for two different products" do
