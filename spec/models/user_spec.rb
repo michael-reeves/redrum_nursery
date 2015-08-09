@@ -50,4 +50,76 @@ RSpec.describe User, type: :model do
 
     expect(user_2).to be_invalid
   end
+
+  it "has a first name with whitespace removed" do
+    user.first_name = " Jane "
+    user.save
+    expect(user.first_name).to eq("Jane")
+
+    user.first_name = "Jane "
+    user.save
+    expect(user.first_name).to eq("Jane")
+
+    user.first_name = " Jane"
+    user.save
+    expect(user.first_name).to eq("Jane")
+
+    user.first_name = "Jane Doe"
+    user.save
+    expect(user.first_name).to eq("Jane Doe")
+  end
+
+  it "has a last name with whitespace removed" do
+    user.last_name = " Doe "
+    user.save
+    expect(user.last_name).to eq("Doe")
+
+    user.last_name = "Doe "
+    user.save
+    expect(user.last_name).to eq("Doe")
+
+    user.last_name = " Doe"
+    user.save
+    expect(user.last_name).to eq("Doe")
+
+    user.last_name = "Jane Doe"
+    user.save
+    expect(user.last_name).to eq("Jane Doe")
+  end
+
+  it "has a password length of at least 8 characters" do
+    user.password = "1234567"
+    expect(user).to be_invalid
+
+    user.password = "12345678"
+    expect(user).to be_valid
+  end
+
+  it "has an email with whitespace removed" do
+    user.email = " jane@doe.com "
+    user.save
+    expect(user.email).to eq("jane@doe.com")
+
+    user.email = "jane@doe.com "
+    user.save
+    expect(user.email).to eq("jane@doe.com")
+
+    user.email = " jane@doe.com"
+    user.save
+    expect(user.email).to eq("jane@doe.com")
+  end
+
+  it "has a valid email address format" do
+    user.email = "jane@doe"
+    expect(user).to be_invalid
+
+    user.email = "@doe.com"
+    expect(user).to be_invalid
+
+    user.email = "jane@doe"
+    expect(user).to be_invalid
+
+    user.email = "jane@doe.com"
+    expect(user).to be_valid
+  end
 end

@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show"
 
   get "/cart", to: "cart_items#index"
-  post "/cart_items", to: "cart_items#create"
+  resources :cart_items, only: [:create, :update]
 
-  get "/login", to: "sessions#new"
+  get "/login",  to: "sessions#new"
   post "/login", to: "sessions#create"
-  get "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
+
+  namespace :admin do
+    get "/dashboard", to: "users#index"
+  end
 end

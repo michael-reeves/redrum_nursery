@@ -44,14 +44,14 @@
         </li>
         <% if current_user %>
         <li>
-          <%= link_to "Logout", logout_path %>
+          <%= link_to "Logout", logout_path, method: :delete %>
         </li>
         <% else %>
         <li>
           <%= link_to "Create Account", new_user_path %>
         </li>
         <li>
-          <a href="#">Login</a>
+          <%= link_to "Login", login_path %>
         </li>
         <% end %>
         <li>
