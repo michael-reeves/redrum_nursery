@@ -48,6 +48,19 @@ describe Cart do
     end
   end
 
+  context "#delete_item" do
+    it "removes the product from data" do
+      input_data = {}
+      input_data[product.id.to_s] = 2
+      cart = Cart.new(input_data)
+
+      expect(cart.data).to eq(product.id.to_s => 2)
+
+      cart.delete_item(product)
+      expect(cart.data).to eq({})
+    end
+  end
+
   context "#total_price" do
     it "returns the total price for the cart" do
       cart = Cart.new(nil)

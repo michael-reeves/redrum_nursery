@@ -23,6 +23,10 @@ class Cart
     data[product.id.to_s] +=  1
   end
 
+  def delete_item(product)
+    data.delete(product.id.to_s)
+  end
+
   def total_price
     cart_items.reduce(0) do |total, cart_item|
       total + cart_item.item_total
