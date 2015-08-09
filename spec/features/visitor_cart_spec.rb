@@ -133,7 +133,7 @@ feature "Visitor" do
       end
     end
 
-    xscenario "adds an item and then clicks the remove link" do
+    scenario "adds an item and then clicks the remove link" do
       item1 = @plants.products.first
       visit product_path(item1)
       click_button "Add to Cart"
@@ -150,10 +150,11 @@ feature "Visitor" do
       end
 
       within(".row", text: "Plant 1") do
-        click_button("remove")
+        click_link("remove")
       end
 
       expect(current_path).to eq(cart_path)
+      skip
       expect(page).to have_content("Successfully removed Plant 1 from your" \
         "cart")
       expect(page).to have_link("Plant 1")
@@ -163,6 +164,7 @@ feature "Visitor" do
 
       within(".total") do
         expect(page).not_to have_content("$19.99")
+        expect(page).to have_content("$0")
       end
     end
   end

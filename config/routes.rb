@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show"
 
   get "/cart", to: "cart_items#index"
-  resources :cart_items, only: [:create, :update]
+  resources :cart_items, only: [:create, :update, :destroy]
 
   get "/login",  to: "sessions#new"
   post "/login", to: "sessions#create"
