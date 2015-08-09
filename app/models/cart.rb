@@ -23,6 +23,10 @@ class Cart
     data[product.id.to_s] +=  1
   end
 
+  def update_item_quantity(product, quantity)
+    data[product.id.to_s] = quantity
+  end
+
   def delete_item(product)
     data.delete(product.id.to_s)
   end
