@@ -9,9 +9,7 @@
 <body>
   <!-- Navigation -->
   <%= render partial: 'layouts/navigation' %>
-  <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: "alert alert-#{type}" %>
-  <% end %>
+  <%= render partial: 'partials/flash_messages' %>
 
   <%= yield %>
 

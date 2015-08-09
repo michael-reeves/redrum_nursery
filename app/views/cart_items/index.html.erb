@@ -4,29 +4,31 @@
   <div class="table-responsive">
     <div class="table table-hover">
       <div class="row">
-        <div class="col-sm-3 col-md-3">&nbsp;</div>
+        <div class="col-sm-3 col-md-2">&nbsp;</div>
         <div class="col-sm-5 col-md-5">Product</div>
         <div class="col-sm-1 col-md-1">Price</div>
         <div class="col-sm-1 col-md-1">Quantity</div>
         <div class="col-sm-1 col-md-1">Total</div>
-        <div class="col-sm-1 col-md-1">&nbsp;</div>
+        <div class="col-sm-1 col-md-2">&nbsp;</div>
       </div>
       <% @cart_items.each do |cart_item| %>
       <div class="row">
         <%= form_for(cart_item, url: cart_item_path(cart_item)) do |f| %>
-        <%= image_tag cart_item.image_url, class: "img-responsive col-sm-3 col-md-3" %>
+        <%= image_tag cart_item.image_url, class: "img-responsive col-sm-2 col-md-2" %>
         <div class="name col-sm-5 col-md-5">
           <%= cart_item.name %><br>
           <%= cart_item.description %>
+          <span class="remove-product">
+            <%= link_to "remove", cart_item_path(cart_item), method: :delete %>
+          </span>
         </div>
         <div class="item-total col-sm-1 col-md-1">$<%= cart_item.price %></div>
         <%= f.text_field(:quantity, class: "col-sm-1 col-md-1 quantity") %>
         <div class="sub-total col-sm-1 col-md-1">
           $<%= cart_item.item_total %>
         </div>
-        <div class="col-sm-1 col-md-1">
-            <%= f.submit "update", class: "btn btn-xs btn-success" %>
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <div class="col-sm-2 col-md-2">
+          <%= f.submit "update", class: "btn btn-xs btn-success" %>
         </div>
         <% end %>
       </div> <!-- /row -->
@@ -38,6 +40,8 @@
     </div> <!-- /table -->
 
   </div>
+
   <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
   <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
+  
 </div><!-- /.container -->
