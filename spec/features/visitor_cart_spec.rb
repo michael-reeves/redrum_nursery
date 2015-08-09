@@ -134,8 +134,8 @@ feature "Visitor" do
     end
 
     scenario "adds an item and then clicks the remove link" do
-      item1 = @plants.products.first
-      visit product_path(item1)
+      item = @plants.products.first
+      visit product_path(item)
       click_button "Add to Cart"
 
       find("#cart").click
@@ -154,11 +154,13 @@ feature "Visitor" do
       end
 
       expect(current_path).to eq(cart_path)
-      skip
-      expect(page).to have_content("Successfully removed Plant 1 from your" \
-        "cart")
-      expect(page).to have_link("Plant 1")
-      expect(page).to have_xpath("//a[@href=\"/products/1\"]")
+
+      within(".flash") do
+        expect(page).to have_content("Successfully removed Plant 1 " \
+          "from your cart")
+        expect(page).to have_link("Plant 1")
+        expect(page).to have_xpath("//a[@href=\"/products/77\"]")
+      end
 
       expect(page).not_to have_content("This is the description for plant 1")
 
