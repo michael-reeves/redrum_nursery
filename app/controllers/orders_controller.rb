@@ -3,6 +3,15 @@ class OrdersController < ApplicationController
   end
 
   def create
+    create_order_and_order_items
+    clear_cart_and_session_cart
+    flash[:success] = "Order was successfully placed!"
+    redirect_to orders_path
+  end
+
+  private 
+
+  def create_order_and_order_items
     order = Order.create(user_id: current_user.id,
                  status: "Ordered")
     
@@ -12,11 +21,10 @@ class OrdersController < ApplicationController
                        quantity: cart_item.quantity,
                        unit_price: cart_item.price)
     end 
+  end
 
+  def clear_cart_and_session_cart
     session[:cart] = {}
     cart.clear
-
-    flash[:success] = "Order was successfully placed!"
-    redirect_to orders_path
   end
 end
