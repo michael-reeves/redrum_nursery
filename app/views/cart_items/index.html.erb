@@ -33,10 +33,11 @@
       <% end %>
       <div class="row">
         <div class="col-sm-offset-9 col-md-offset-9 col-sm-1 col-md-1">Total</div>
-        <div class="col-sm-1 col-md-1 total">$<%= @cart.total_price %></div>
+        <div class="col-sm-1 col-md-1 total">$<%= cart.total_price %></div>
       </div> <!-- /row -->
     </div> <!-- /table -->
 
   </div>
-  <%= button_tag "Continue Shopping", class: "btn btn-lg btn-primary" %> <%= button_tag "Checkout", class: "btn btn-lg btn-success pull-right" %>
+  <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
+  <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
 </div><!-- /.container -->
