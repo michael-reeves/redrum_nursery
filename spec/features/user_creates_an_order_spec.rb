@@ -46,5 +46,14 @@ feature "Existing user places an order" do
       expect(page).to_not have_content("Plant2")
     end
   end
+
+  context "as a visitor, before logging in" do
+    scenario "he is required to login after clicking checkout" do
+      visit cart_path
+      click_button("Checkout")
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Please login before checking out.")
+    end
+  end
 end
-  
