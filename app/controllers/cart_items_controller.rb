@@ -23,6 +23,7 @@ class CartItemsController < ApplicationController
                       "<a href=\"#{product_path(@product)}\">" \
                       "#{@product.name}</a> from your cart."
     cart.delete_item(@product)
+    session[:cart] = cart.data
     redirect_to cart_path
   end
 
