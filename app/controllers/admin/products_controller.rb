@@ -1,8 +1,4 @@
 class Admin::ProductsController < Admin::BaseController
-  def new
-    @product = Product.new
-  end
-
   def create
     @product = Product.new(product_params)
     if @product.save

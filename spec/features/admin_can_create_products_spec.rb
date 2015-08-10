@@ -2,19 +2,16 @@ require "rails_helper"
 
 feature "an admin can create products" do
   before do
-    User.create(first_name: "Mike",
+    admin = User.create(first_name: "Mike",
                 last_name: "Dorrance",
                 email: "mike@mike.com",
                 password: "12345678",
-                role: 1)
+                role: "admin")
 
     visit "/"
-    click_link "Login"
-    fill_in "Email", with: "mike@mike.com"
-    fill_in "Password", with: "12345678"
-    click_button "Login"
 
-    visit "/admin/dashboard"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user).and_return(admin)
 
     Category.create(name: "Plants",
                     description: "Plants category description",
@@ -23,11 +20,10 @@ feature "an admin can create products" do
                     description: "Food category description",
                     slug: "food")
 
-    click_link "Add Product"
+    visit "/admin/dashboard"
   end
 
-  scenario "admin clicks Add Product and sees Add Product Page" do
-    expect(current_path).to eq(new_admin_product_path)
+  scenario "admin visits admin/dashboard and sees Add Product Form" do
     expect(page).to have_content("Add a New Product")
     expect(page).to have_content("Name")
     expect(page).to have_content("Description")
@@ -59,7 +55,7 @@ feature "an admin can create products" do
     click_button "Add Product"
 
     visit products_path
-
-    page.find(".img-responsive")["src"].should have_content "default_image.jpg"
+    
+    expect(page).to have_css("img[src*='default_image.jpg']")
   end
 end
