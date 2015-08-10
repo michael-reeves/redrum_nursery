@@ -13,8 +13,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    cart.update_item_quantity(@product, params[:product][:quantity].to_i)
-    session[:cart] = cart.data
+    if cart.update_item_quantity(@product, params[:product][:quantity].to_i)
+      session[:cart] = cart.data
+    else
+      flash[:warning] = "Cannot set quantity below one."
+    end
     redirect_to cart_path
   end
 
