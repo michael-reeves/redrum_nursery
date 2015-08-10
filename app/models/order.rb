@@ -8,8 +8,8 @@ class Order < ActiveRecord::Base
     inclusion: { in: ["ordered", "paid", "cancelled", "completed"] }
 
   def total
-    order_items.inject(0) do |total, order_item|
-      total += (order_item.quantity * order_item.unit_price)
+    order_items.reduce(0) do |total, order_item|
+      total + (order_item.quantity * order_item.unit_price)
     end
   end
 end

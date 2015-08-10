@@ -8,6 +8,11 @@ class Product < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
 
+  enum status: %w(active inactive)
+
+  scope :active, -> { where(status: 0) }
+  scope :inactive, -> { where(status: 1) }
+
   private
 
   def set_default_image
