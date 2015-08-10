@@ -8,7 +8,7 @@ RSpec.describe OrderItem, type: :model do
                        password:   "password")
 
     order = Order.create(user_id: user.id,
-                         status: "Ordered")
+                         status: "ordered")
 
     category = Category.create(
       name: "Plants",
@@ -28,7 +28,7 @@ RSpec.describe OrderItem, type: :model do
   end
 
   it "belongs to an order" do
-    expect(@order_item.order.status).to eq("Ordered")
+    expect(@order_item.order.status).to eq("ordered")
   end
 
   it "has a quantity" do

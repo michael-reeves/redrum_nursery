@@ -17,7 +17,7 @@ feature "user sees a single past order" do
                                   price:       19.99)
 
       @order = Order.create(user_id: user.id,
-                            status: "Ordered",
+                            status: "ordered",
                             created_at: DateTime.civil(2015, 07, 05, 21, 33, 0),
                             updated_at: DateTime.civil(2015, 07, 05, 21, 33, 0))
 
@@ -34,6 +34,7 @@ feature "user sees a single past order" do
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user).and_return(user)
     end
+
     scenario "user is able to see past order details" do
       visit orders_path
 
@@ -52,7 +53,6 @@ feature "user sees a single past order" do
         expect(page).to have_content("Plant1")
         expect(page).to have_content("1") # qty for Plant1
         expect(page).to have_content("$9.99") # subtotal
-        save_and_open_page
         expect(page).to have_xpath("//a[@href=\"#{product_path(@product_1)}\"]")
       end
 
@@ -63,8 +63,12 @@ feature "user sees a single past order" do
         expect(page).to have_xpath("//a[@href=\"#{product_path(@product_2)}\"]")
       end
 
-      expect(page).to have_content("Ordered", count: 2) # status
+      expect(page).to have_content("ordered", count: 2) # status
       expect(page).to have_content("$49.97") # total
+
+      pending 
+      within(".other-notes") do
+      end
     end
   end
 end
