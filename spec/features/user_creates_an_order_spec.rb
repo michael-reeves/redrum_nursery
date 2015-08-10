@@ -40,7 +40,7 @@ feature "Existing user places an order" do
         expect(page).to have_content("Orders")
       end
       expect(page).to have_content("Order was successfully placed!")
-      expect(page).to have_content("Ordered")
+      expect(page).to have_content("ordered")
       expect(page).to have_content("$29.98")
 
       visit cart_path

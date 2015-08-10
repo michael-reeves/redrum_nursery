@@ -19,8 +19,8 @@
             <td><%= order.id %></td>
             <td><%= order.status %></td>
             <td>$<%= order.total %></td>
-            <td>
-              <a href="#" class="">
+            <td class="order-details-link">
+              <a href="<%= order_path(order) %>">
                 <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
                 </span>
                 View Order Details

@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(version: 20150810132016) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
+  add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|

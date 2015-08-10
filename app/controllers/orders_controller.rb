@@ -17,11 +17,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   private 
 
   def create_order_and_order_items
     order = Order.create(user_id: current_user.id,
-                         status: "Ordered")
+                         status: "ordered")
 
     cart.cart_items.each do |cart_item|
       OrderItem.create(order_id: order.id,
