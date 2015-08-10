@@ -1,4 +1,8 @@
 class Admin::ProductsController < Admin::BaseController
+  def index
+    @products = Product.all
+  end
+
   def create
     @product = Product.new(product_params)
     if @product.save

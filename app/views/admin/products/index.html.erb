@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center">All Products</h1>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= image_tag product.image_url, class:"img-small", alt: "#{product.name} image" %></td>
+            <td><a href="<%= product_path(product) %>"><%= product.name %></a></td>
+            <td><%= product.description %></td>
+            <td>$<%= product.price %></td>
+            <td><%= product.status %></td>
+            <td><%= link_to "edit", edit_admin_product_path(product) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <%= link_to "Back to Dashboard", admin_dashboard_path, class: "btn btn-lg btn-primary pull-left" %>
+</div><!-- /.container -->
