@@ -51,7 +51,7 @@ feature "a user" do
   scenario "can access a retired product but cannot add it to the cart" do
     visit product_path(@plant3)
 
-    expect(current_path).to eq "/products/11"
+    expect(current_path).to eq product_path(@plant3)
     expect(page).to have_css("input[value*='Retired']")
   end
 end
