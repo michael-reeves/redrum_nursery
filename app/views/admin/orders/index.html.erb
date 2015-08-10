@@ -1,0 +1,29 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="<%= admin_dashboard_path %>">Admin Dashboard</a></li>
+    <li class="active">All Orders</li>
+  </ol>
+  <h3 class="text-center">All Orders</h3>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Orders</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= @orders.statuses.keys do |status| %>
+          <tr>
+            <td><%= status.to_s.capitalize %></td>
+            <td><%= @orders.where(status: status).size %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan=3></td>
+          <th>Total</th>
+          <th class="total"><%= number_to_currency(@order.total) %></th>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
