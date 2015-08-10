@@ -8,13 +8,16 @@ feature "user sees a single past order" do
                          email:      "jane@gmail.com",
                          password:   "password")
 
-      @product_1 = Product.create(name:        "Plant1",
-                                  description: "Plant 1 description",
-                                  price:       9.99)
+      category = Category.create(name: "Plants",
+                                 description: "Plants description")
 
-      @product_2 = Product.create(name:        "Plant2",
-                                  description: "Plant 2 description",
-                                  price:       19.99)
+      @product_1 = category.products.create(name:        "Plant1",
+                                            description: "Plant 1 description",
+                                            price:       9.99)
+
+      @product_2 = category.products.create(name:        "Plant2",
+                                            description: "Plant 2 description",
+                                            price:       19.99)
 
       @order = Order.create(user_id: user.id,
                             status: "ordered",
