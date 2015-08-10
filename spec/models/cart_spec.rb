@@ -1,10 +1,16 @@
 require "rails_helper"
 
 describe Cart do
+  let(:category) do
+    Category.create(name: "Plants",
+                    description: "Plants category description",
+                    slug: "plants")
+  end
+
   let(:product) do
-    Product.create(name:        "Plant 1",
-                   description: "Plant 1 description",
-                   price:       29.99)
+    category.products.create(name:        "Plant 1",
+                             description: "Plant 1 description",
+                             price:       29.99)
   end
 
   context "#cart_items" do

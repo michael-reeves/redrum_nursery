@@ -8,13 +8,17 @@ feature "Existing user places an order" do
                          email:      "jane@gmail.com",
                          password:   "password")
 
-      product_1 = Product.create(name:        "Plant1",
-                                 description: "Plant 1 description",
-                                 price:       9.99)
+      category = Category.create(name: "Plants",
+                                 description: "Plants category description",
+                                 slug: "plants")
 
-      product_2 = Product.create(name:        "Plant2",
-                                 description: "Plant 2 description",
-                                 price:       19.99)
+      product_1 = category.products.create(name:        "Plant1",
+                                           description: "Plant 1 description",
+                                           price:       9.99)
+
+      product_2 = category.products.create(name:        "Plant2",
+                                           description: "Plant 2 description",
+                                           price:       19.99)
 
       user_cart = Cart.new(nil)
       user_cart.add_item(product_1)
