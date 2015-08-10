@@ -70,13 +70,14 @@ feature "user sees a single past order" do
       expect(page).to have_content("$49.97") # total
     end
 
-    scenario "if order was completed/cancelled, timestamp should be displayed" do
+    scenario "if order was completed/cancelled, timestamp is displayed" do
       @order.update(status: "cancelled")
       @order.update(updated_at: DateTime.civil(2015, 8, 2, 21, 33, 0))
 
       visit order_path(@order)
       within(".other-notes") do
-        expect(page).to have_content("This order was cancelled on August  2, 2015 at 9:33 PM.")
+        expect(page).to have_content("This order was cancelled on " \
+          "August  2, 2015 at 9:33 PM.")
       end
     end
   end
