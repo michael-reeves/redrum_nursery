@@ -43,4 +43,14 @@ RSpec.describe OrderItem, type: :model do
     expect(@order_item.created_at).to be_a_kind_of(ActiveSupport::TimeWithZone)
     expect(@order_item.updated_at).to be_a_kind_of(ActiveSupport::TimeWithZone)
   end
+
+  it "cant have a quantity of zero" do
+    @order_item.update(quantity: 0)
+    expect(@order_item).to be_invalid
+  end
+
+  it "cant have a negative quantity" do
+    @order_item.update(quantity: -5)
+    expect(@order_item).to be_invalid
+  end
 end
