@@ -4,7 +4,7 @@
       <%= image_tag product.image_url, class: "img-responsive",
         alt: "#{product.name} image" %>
       <div class="caption">
-        <h4 class="pull-right">$<%= product.price %></h4>
+        <h4 class="pull-right"><%= number_to_currency(product.price) %></h4>
         <h4><%= product.name %></h4>
         <p><%= product.description %></p>
       </div>

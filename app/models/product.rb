@@ -3,5 +3,14 @@ class Product < ActiveRecord::Base
   has_many :order_items
   has_many :orders, through: :order_items
 
-  validates :name, :price, presence: true
+  before_validation :set_default_image
+  validates :name, :description, :price, :category_id, presence: true
+  validates :name, uniqueness: true
+  validates :price, numericality: { greater_than: 0 }
+
+  private
+
+  def set_default_image
+    self.image_url = "default_image.jpg" if image_url && image_url.empty?
+  end
 end

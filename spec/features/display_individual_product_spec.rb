@@ -2,8 +2,14 @@ require "rails_helper"
 
 feature "a visitor" do
   context "visits /products/:id" do
+    let(:category) do
+      Category.create(name: "Plants",
+                      description: "Plants category description",
+                      slug: "plants")
+    end
+
     let(:product) do
-      Product.create(
+      category.products.create(
         name: "Plant 1",
         description: "This is the description for plant 1",
         price: 19.99,
@@ -25,12 +31,12 @@ feature "a visitor" do
     end
 
     scenario "and sees featured products" do
-      Product.create(
+      category.products.create(
         name: "Plant 2",
         description: "This is the description for plant 2",
         price: 29.99,
         image_url: "plants/plant-4.jpg")
-      Product.create(
+      category.products.create(
         name: "Plant 3",
         description: "This is the description for plant 3",
         price: 39.99,

@@ -7,14 +7,15 @@ RSpec.describe Product, type: :model do
       description: "The largest carnivorous plant selection in the world!")
   end
 
-  it "is created and belongs to a category" do
-    product = Product.create(
+  let(:product) do
+    category.products.create(
       name: "Venus Fly Trap",
       description: "The gold standard of carnivorous plants!",
       image_url: "venus_fly_trap.jpg",
-      price: "19.99",
-      category_id: category.id)
+      price: "19.99")
+  end
 
+  it "is created and belongs to a category" do
     expect(product.name).to eq("Venus Fly Trap")
     expect(product.description).to eq(
       "The gold standard of carnivorous plants!")
@@ -27,24 +28,57 @@ RSpec.describe Product, type: :model do
   end
 
   it "requires a name" do
-    product = Product.create(
-      name: nil,
+    product.name = nil
+
+    expect(product).to_not be_valid
+  end
+
+  it "requires a unique name" do
+    category.products.create(
+      name: "Venus Fly Trap",
       description: "The gold standard of carnivorous plants!",
       image_url: "venus_fly_trap.jpg",
-      price: "19.99",
-      category_id: category.id)
+      price: "19.99")
+    product_2 = category.products.create(
+      name: "Venus Fly Trap",
+      description: "Some other description",
+      image_url: "another_image.jpg",
+      price: "9.99")
+
+    expect(product_2).to_not be_valid
+  end
+
+  it "requires a description" do
+    product.description = nil
 
     expect(product).to_not be_valid
   end
 
   it "requires a price" do
-    product = Product.create(
+    product.price = nil
+
+    expect(product).to_not be_valid
+  end
+
+  it "requires a numeric price" do
+    product.price = "abc"
+
+    expect(product).to_not be_valid
+  end
+
+  it "requires price to be greater than zero" do
+    product.price = "0.00"
+
+    expect(product).to_not be_valid
+  end
+
+  it "requires a category" do
+    no_category_product = Product.create(
       name: "Venus Fly Trap",
       description: "The gold standard of carnivorous plants!",
       image_url: "venus_fly_trap.jpg",
-      price: nil,
-      category_id: category.id)
+      price: "19.99")
 
-    expect(product).to_not be_valid
+    expect(no_category_product).to_not be_valid
   end
 end
