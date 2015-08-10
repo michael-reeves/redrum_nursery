@@ -3,10 +3,10 @@ require "rails_helper"
 feature "an admin can create products" do
   before do
     admin = User.create(first_name: "Mike",
-                last_name: "Dorrance",
-                email: "mike@mike.com",
-                password: "12345678",
-                role: "admin")
+                        last_name: "Dorrance",
+                        email: "mike@mike.com",
+                        password: "12345678",
+                        role: "admin")
 
     visit "/"
 
@@ -55,7 +55,7 @@ feature "an admin can create products" do
     click_button "Add Product"
 
     visit products_path
-    
+
     expect(page).to have_css("img[src*='default_image.jpg']")
   end
 end
