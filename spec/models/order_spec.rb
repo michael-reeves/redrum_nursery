@@ -7,8 +7,7 @@ RSpec.describe Order, type: :model do
                        email:      "jane@doe.com",
                        password:   "password")
 
-    @order = Order.create(user_id: user.id,
-                          status: "Ordered")
+    @order = user.orders.create(status: "ordered")
 
     category = Category.create(
       name: "Plants",
@@ -43,8 +42,38 @@ RSpec.describe Order, type: :model do
     expect(@order.user.first_name).to eq("Jane")
   end
 
-  it "has a status" do
-    expect(@order.status).to eq("Ordered")
+  it "is valid with a status of ordered" do
+    expect(@order.status).to eq("ordered")
+    expect(@order).to be_valid
+  end
+
+  it "is valid with a status of paid" do
+    @order.status = "paid"
+    expect(@order).to be_valid
+  end
+
+  it "is valid with a status of cancelled" do
+    @order.status = "cancelled"
+    expect(@order).to be_valid
+  end
+
+  it "is valid with a status of completed" do
+    @order.status = "completed"
+    expect(@order).to be_valid
+  end
+
+  it "is invalid with a blank status" do
+    @order.status = ""
+    expect(@order).to be_invalid
+  end
+
+  it "is invalid with a nil status" do
+    @order.status = nil
+    expect(@order).to be_invalid
+  end
+
+  it "is invalid with a whatever status" do
+    expect { @order.status = "whatever" }.to raise_error(ArgumentError)
   end
 
   it "has a created_at and updated_at" do
