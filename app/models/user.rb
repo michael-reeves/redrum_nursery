@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :orders
+  has_many :addresses
 
   before_validation :strip_whitespace
   validates :first_name, :last_name, :email, presence: true
@@ -10,6 +11,9 @@ class User < ActiveRecord::Base
 
   enum role: %w(default admin)
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
   private
 
   def strip_whitespace

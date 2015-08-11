@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Welcome to Redrum Nursery," \
@@ -18,6 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    unless current_user
+      render file: "public/404.html", status: :not_found, layout: false
+    end
   end
 
   private
