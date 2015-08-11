@@ -4,26 +4,54 @@
     <li class="active">All Orders</li>
   </ol>
   <h3 class="text-center">All Orders</h3>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <ul class="nav nav-pills" role="tablist"> 
+        <li role="presentation">
+          <a href="<%= admin_orders_path %>">All
+            <span class="badge"><%= @orders.count %></span>
+          </a>
+        </li>
+        <% @orders.statuses.keys.each do |key| %>
+          <li>
+            <a href="/admin/<%= key %>-orders">
+              <%= key.capitalize %>
+              <span class="badge"><%= @orders.send(key.to_sym).count %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div> <!-- /row -->
+  <br>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Order ID</th>
           <th>Status</th>
-          <th>Orders</th>
+          <th>Total</th>
+          <th>Placed On</th>
+          <th>Change Status</th>
         </tr>
       </thead>
       <tbody>
-        <%= @orders.statuses.keys do |status| %>
+        <% @orders.send(@status).each do |order| %>
           <tr>
-            <td><%= status.to_s.capitalize %></td>
-            <td><%= @orders.where(status: status).size %></td>
+            <td>
+              <a href="#">
+                # <%= order.id %>
+            </a>
+            </td>
+            <td><%= order.status.to_s.capitalize %></td>
+            <td><%= number_to_currency(order.total) %></td>
+            <td><%= order.created_at.strftime("%B %e, %Y at %l:%M %p") %></td>
+            <td>
+              <a href="#">Cancel</a>
+            </td>
           </tr>
         <% end %>
-        <tr>
-          <td colspan=3></td>
-          <th>Total</th>
-          <th class="total"><%= number_to_currency(@order.total) %></th>
-        </tr> 
       </tbody>
     </table>
+
   </div>
