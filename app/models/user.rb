@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 
   enum role: %w(default admin)
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
   private
 
   def strip_whitespace
