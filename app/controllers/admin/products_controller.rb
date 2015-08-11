@@ -1,6 +1,12 @@
 class Admin::ProductsController < Admin::BaseController
+  before_action :set_product, only: [:edit, :update]
+
   def index
     @products = Product.all
+  end
+
+  def new
+  @product = Product.new
   end
 
   def create
@@ -13,6 +19,15 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @product.update(product_params)
+    flash[:success] = "#{@product.name} has been updated."
+    redirect_to admin_products_path
+  end
+
   private
 
   def product_params
@@ -20,6 +35,11 @@ class Admin::ProductsController < Admin::BaseController
                                     :description,
                                     :price,
                                     :image_url,
-                                    :category_id)
+                                    :category_id,
+                                    :status)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end

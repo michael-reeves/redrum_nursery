@@ -1,0 +1,48 @@
+<div class="container">
+ <ol class="breadcrumb">
+   <li><a href="<%= admin_dashboard_path %>">Admin Dashboard</a></li>
+   <li class="active">Edit Product</li>
+ </ol>
+</div>
+<div class="container">
+  <h1 class="text-center">Edit Product</h1>
+  <div class="well col-sm-6 col-sm-offset-3">
+    <%= form_for @product, :url => admin_product_path do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", id: "product_form_name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control",
+        id: "product_form_description" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.text_field :price, class: "form-control",
+        id: "product_form_price" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= collection_select :product,
+        :category_id,
+        Category.all,
+        :id,
+        :name,
+        {},
+        { class: "form-control", id: "product_form_category" } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :status, "Status" %>
+      <%= f.select :status, [["Active", "active"], ["Retired", "inactive"]],
+        {}, { class: "form-control", id: "product_form_status" } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image_url, "Image Url" %>
+      <%= f.text_field :image_url, class: "form-control",
+        id: "product_form_image_url" %>
+    </div>
+      <%= f.submit "Edit Product", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
