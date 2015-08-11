@@ -24,7 +24,11 @@ class Cart
   end
 
   def update_item_quantity(product, quantity)
-    data[product.id.to_s] = quantity
+    if quantity > 0
+      data[product.id.to_s] = quantity
+    else
+      return false
+    end
   end
 
   def delete_item(product)
@@ -36,7 +40,7 @@ class Cart
       total + cart_item.item_total
     end
   end
-  
+
   def clear
     @data = Hash.new
   end
