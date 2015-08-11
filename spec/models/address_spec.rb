@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Address, type: :model do
   let(:user) do
@@ -95,10 +95,10 @@ RSpec.describe Address, type: :model do
 
   it "strips whitespace for all text columns" do
     address = Address.create(address_1: " Address 1 ",
-                          address_2: " Address 2 ",
-                          city:      " City ",
-                          state:     " ST ",
-                          zip_code:  " 12345 ")
+                             address_2: " Address 2 ",
+                             city:      " City ",
+                             state:     " ST ",
+                             zip_code:  " 12345 ")
 
     expect(address.address_1).to eq("Address 1")
     expect(address.address_2).to eq("Address 2")
