@@ -35,7 +35,6 @@ feature "admin user" do
                              quantity:   1,
                              unit_price: plant2.price)
 
-
     admin = User.create(first_name: "Mike",
                         last_name:  "D",
                         email:      "mike@mike.com",
@@ -48,7 +47,7 @@ feature "admin user" do
     visit admin_order_path(order)
 
     expect(current_path).to eq(admin_order_path(order))
-    expect(page).to have_content("Order ID: # 1")
+    expect(page).to have_content("Order ID: # #{order.id}")
     expect(page).to have_content("Purchase Date/Time: " \
                                  "July  5, 2015 at  9:33 PM")
     expect(page).to have_content("Jane Doe")
