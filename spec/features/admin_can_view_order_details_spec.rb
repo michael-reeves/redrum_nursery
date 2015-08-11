@@ -10,21 +10,24 @@ feature "admin user" do
 
     plant1 = category.products.create(name: "Plant 1",
                         description: "This is the description for plant 1",
-                        price: 19.99,
-                        image_url: "plants/plant-2.jpg",
-                        status: "active")
+                        price:       19.99,
+                        image_url:   "plants/plant-2.jpg",
+                        status:      "active")
     plant2 = category.products.create(name: "Plant 2",
                         description: "This is the description for plant 2",
-                        price: 29.99,
-                        image_url: "plants/plant-2.jpg",
-                        status: "active")
+                        price:       29.99,
+                        image_url:   "plants/plant-2.jpg",
+                        status:      "active")
 
     user = User.create(first_name: "Jane",
                        last_name:  "Doe",
-                       email: "jane@doe.com",
-                       password: "password")
+                       email:      "jane@doe.com",
+                       password:   "password")
 
-    order = user.orders.create(status: 0)
+    order = user.orders.create(status: "ordered",
+                       created_at: DateTime.civil(2015, 07, 05, 21, 33, 0),
+                       updated_at: DateTime.civil(2015, 07, 05, 21, 33, 0))
+
     order.order_items.create(product_id: plant1.id,
                              quantity:   3,
                              unit_price: plant1.price)
@@ -34,10 +37,10 @@ feature "admin user" do
 
 
     admin = User.create(first_name: "Mike",
-                        last_name: "D",
-                        email: "mike@mike.com",
-                        password: "12345678",
-                        role: "admin")
+                        last_name:  "D",
+                        email:      "mike@mike.com",
+                        password:   "12345678",
+                        role:       "admin")
 
     allow_any_instance_of(ApplicationController).to receive(
       :current_user).and_return(admin)
@@ -45,7 +48,10 @@ feature "admin user" do
     visit admin_order_path(order)
 
     expect(current_path).to eq(admin_order_path(order))
-# byebug
+    expect(page).to have_content("Order ID: # 1")
+    expect(page).to have_content("Purchase Date/Time: " \
+                                 "July  5, 2015 at  9:33 PM")
+    expect(page).to have_content("Jane Doe")
 
     within("tr", text: "Plant 1") do
       expect(page).to have_content("ordered")

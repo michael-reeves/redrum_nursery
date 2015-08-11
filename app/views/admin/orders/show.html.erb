@@ -8,16 +8,18 @@
     </h5>
   </div>
   <br/>
+  <h5><strong>User:</strong> <%= @order.user.full_name %></h5>
+  <br/>
   <div class="row">
     <div class="col-md-6">
-      <h5>Billing Address</h5>
+      <h5><strong>Billing Address</strong></h5>
       <%#= render partial: "partials/address", locals: { address = @order.user.addresses.billing } %>
     </div>
     <div class="col-md-6">
-      <h5>Shipping Address</h5>
+      <h5><strong>Shipping Address</strong></h5>
       <%#= render partial: "partials/address", locals: { address = @order.user.addresses.shipping } %>
     </div>
-  </div>
+  </div><br>
   <div class="table-responsive">
     <%= render partial: "partials/single_order_table" %>
     <% if @order.status == "cancelled" || @order.status == "completed" %>
