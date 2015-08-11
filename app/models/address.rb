@@ -7,6 +7,9 @@ class Address < ActiveRecord::Base
 
   enum type_of: %w(billing shipping)
 
+  scope :billing,   -> { where(type_of: 0) }
+  scope :shipping,  -> { where(type_of: 1) }
+
   private
 
   def strip_whitespace
