@@ -8,6 +8,16 @@
     </h5>
   </div>
   <br/>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Billing Address</h5>
+      <%#= render partial: "partials/address", locals: { address = @order.user.addresses.billing } %>
+    </div>
+    <div class="col-md-6">
+      <h5>Shipping Address</h5>
+      <%#= render partial: "partials/address", locals: { address = @order.user.addresses.shipping } %>
+    </div>
+  </div>
   <div class="table-responsive">
     <%= render partial: "partials/single_order_table" %>
     <% if @order.status == "cancelled" || @order.status == "completed" %>
@@ -19,10 +29,5 @@
         </p>
       </div>
     <% end %>
-
   </div>
-  <%= link_to "Continue Shopping", products_path,
-    class: "btn btn-lg btn-primary pull-left" %>
-  <%= link_to "Dashboard", dashboard_path,
-    class: "btn btn-lg btn-success pull-right" %>
 </div><!-- /.container -->
