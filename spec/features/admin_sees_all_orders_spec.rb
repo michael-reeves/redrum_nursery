@@ -104,28 +104,28 @@ feature "admin can see all orders" do
     end
 
     within("tr", text: "# #{@order_2.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_2)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_2)}\"]")
       expect(page).to have_content("Paid")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
     end
 
     within("tr", text: "# #{@order_3.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_3)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_3)}\"]")
       expect(page).to have_content("Cancelled")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
     end
 
     within("tr", text: "# #{@order_4.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_4)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_4)}\"]")
       expect(page).to have_content("Completed")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
     end
 
     within("tr", text: "# #{@order_5.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_5)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_5)}\"]")
       expect(page).to have_content("Completed")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
@@ -141,7 +141,7 @@ feature "admin can see all orders" do
     click_link("Ordered 1")
 
     within("tr", text: "# #{@order_1.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_1)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_1)}\"]")
       expect(page).to have_content("Ordered")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
@@ -156,7 +156,7 @@ feature "admin can see all orders" do
     click_link("Paid 1")
 
     within("tr", text: "# #{@order_2.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_1)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_2)}\"]")
       expect(page).to have_content("Paid")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
@@ -171,7 +171,7 @@ feature "admin can see all orders" do
     click_link("Cancelled 1")
 
     within("tr", text: "# #{@order_3.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_1)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_3)}\"]")
       expect(page).to have_content("Cancelled")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
@@ -186,7 +186,7 @@ feature "admin can see all orders" do
     click_link("Completed 2")
 
     within("tr", text: "# #{@order_4.id}") do
-      # expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_1)}\"]")
+      expect(page).to have_xpath("//a[@href=\"#{admin_order_path(@order_4)}\"]")
       expect(page).to have_content("Completed")
       expect(page).to have_content("$9.99")
       expect(page).to have_content("July  5, 2015 at  9:33 PM")
@@ -255,16 +255,3 @@ feature "admin can see all orders" do
 
   end
 end
-
-
-# As an Admin
-# When I visit the dashboard
-# Then I can see a link to a listing of all orders
-# And I can see the total number of orders for each status ("Ordered", "Paid", "Cancelled", "Completed")
-# And I can see a link for each individual order
-# And I can filter orders to display by each status type  ("Ordered", "Paid", "Cancelled", "Completed")
-# And I have links to transition the status
-# 
-# I can click on "cancel" on individual orders which are "paid" or "ordered"
-# I can click on "mark as paid" on orders that are "ordered"
-# I can click on "mark as completed" on orders that are "paid"

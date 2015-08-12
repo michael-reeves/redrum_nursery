@@ -39,7 +39,7 @@
         <% @orders.send(@status).each do |order| %>
           <tr>
             <td>
-              <a href="#">
+              <a href="<%= admin_order_path(order) %>">
                 # <%= order.id %>
             </a>
             </td>
