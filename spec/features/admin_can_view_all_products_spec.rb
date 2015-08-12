@@ -22,7 +22,7 @@ feature "Admin can view all Products from Admin Dashboard" do
 
   scenario "Admin clicks on View All Products and sees all products" do
     product1 = @plants.products.first
-    
+
     click_link "View All Products"
 
     expect(current_path).to eq(admin_products_path)
@@ -74,8 +74,6 @@ feature "Admin can view all Products from Admin Dashboard" do
     price = find("#product_form_price").value
     expect(price).to eq("19.99")
     expect(page).to have_content("Status")
-    status = find("#product_form_status").value
-    category = find("#product_form_category").value
     expect(page).to have_content("Plants")
     expect(page).to have_content("Active")
     expect(page).to have_content("Image Url")
