@@ -21,14 +21,18 @@ feature "an admin can create products" do
                     slug: "food")
 
     visit "/admin/dashboard"
+
+    click_link "View All Products"
+    click_link "Add New Product"
   end
 
-  scenario "admin visits admin/dashboard and sees Add Product Form" do
+  scenario "admin visits admin/product/new and sees Add Product Form" do
     expect(page).to have_content("Add a New Product")
     expect(page).to have_content("Name")
     expect(page).to have_content("Description")
     expect(page).to have_content("Price")
     expect(page).to have_content("Category")
+    expect(page).to have_content("Status")
     expect(page).to have_content("Image Url")
     expect(page).to have_button("Add Product")
   end
@@ -38,6 +42,7 @@ feature "an admin can create products" do
     fill_in "Description", with: "A boat on a lot."
     fill_in "Price", with: "12.99"
     select "Plants", from: "product[category_id]"
+    select "Retired", from: "product[status]"
     fill_in "Image Url", with: "image_url"
     click_button "Add Product"
 

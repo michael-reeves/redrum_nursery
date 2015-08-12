@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  padding-top: 42px; // Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.
+  padding-top: 42px;
 }
 
 h1,
@@ -78,8 +78,21 @@ h6 {
   opacity: 0.8;
 }
 
-// Home Page Carousel
+.img-small {
+  width: 30%;
+}
 
+.word-length {
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.alert {
+  padding-left: 5%;
+}
+// Home Page Carousel
 .carousel {
   height: 50%;
 
@@ -164,7 +177,7 @@ h6 {
 .flash {
   a {
     color: #ffffff;
-    text-decoration: underline;    
+    text-decoration: underline;
   }
 }
 
