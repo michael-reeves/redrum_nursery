@@ -24,6 +24,14 @@ feature "admin user" do
                        email:      "jane@doe.com",
                        password:   "password")
 
+    user.addresses.create(type_of: "billing",
+                          address_1: "1234 Main St", city: "Seattle",
+                          state: "WA", zip_code: 98111)
+
+    user.addresses.create(type_of: "shipping",
+                          address_1: "5678 South Ave", city: "Seattle",
+                          state: "WA", zip_code: 98222)
+
     order = user.orders.create(status: "ordered",
                        created_at: DateTime.civil(2015, 07, 05, 21, 33, 0),
                        updated_at: DateTime.civil(2015, 07, 05, 21, 33, 0))
@@ -51,6 +59,12 @@ feature "admin user" do
     expect(page).to have_content("Purchase Date/Time: " \
                                  "July  5, 2015 at  9:33 PM")
     expect(page).to have_content("Jane Doe")
+
+    expect(page).to have_content("1234 Main St")
+    expect(page).to have_content("98111")
+
+    expect(page).to have_content("5678 South Ave")
+    expect(page).to have_content("98222")
 
     within("tr", text: "Plant 1") do
       expect(page).to have_content("ordered")
