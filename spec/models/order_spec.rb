@@ -89,4 +89,24 @@ RSpec.describe Order, type: :model do
   it "returns the correct #total for an order" do
     expect(@order.total).to eq(64.97)
   end
+
+  it "returns cancel and completed for #available_status_transitions if status is paid" do
+    @order.status = "paid"
+
+    expect(@order.available_status_transitions).to eq(["cancelled", "completed"])
+  end
+
+  it "returns cancel and paid for #available_status_transitions if status is ordered" do
+    @order.status = "ordered"
+
+    expect(@order.available_status_transitions).to eq(["cancelled", "paid"])
+  end
+
+  it "returns an empty array for #available_status_transitions if status is cancelled or completed" do
+    @order.status = "cancelled"
+    expect(@order.available_status_transitions).to eq([])
+
+    @order.status = "completed"
+    expect(@order.available_status_transitions).to eq([])
+  end
 end
