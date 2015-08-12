@@ -35,8 +35,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    billing = @user.addresses.billing.last
-    shipping = @user.addresses.shipping.last
+    billing = @user.addresses.billing.last ||
+      Address.new(user_id: @user.id, type_of: 0)
+    shipping = @user.addresses.shipping.last ||
+      Address.new(user_id: @user.id, type_of: 1)
 
     if (@user.update_attributes(user_params) &&
         billing.update_attributes(billing_params) &&
