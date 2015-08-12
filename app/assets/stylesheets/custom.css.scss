@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  padding-top: 42px; 
+  padding-top: 42px;
 }
 
 h1,
@@ -77,17 +77,18 @@ h6 {
 .img-hover:hover {
   opacity: 0.8;
 }
+
 .img-small {
   width: 30%;
 }
+
 .word-length {
-  white-space: nowrap;
+  max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 50px;
+  white-space: nowrap;
 }
 // Home Page Carousel
-
 .carousel {
   height: 50%;
 

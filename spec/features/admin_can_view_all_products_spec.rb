@@ -63,38 +63,38 @@ feature "Admin can view all Products from Admin Dashboard" do
       click_link "edit"
     end
 
-      expect(current_path).to eq(edit_admin_product_path(product1))
-      expect(page).to have_content("Edit Product")
-      expect(page).to have_content("Name")
+    expect(current_path).to eq(edit_admin_product_path(product1))
+    expect(page).to have_content("Edit Product")
+    expect(page).to have_content("Name")
 
-      name = find("#product_form_name").value
-      expect(name).to eq("Plant 1")
+    name = find("#product_form_name").value
+    expect(name).to eq("Plant 1")
 
-      description = find("#product_form_description").value
-      expect(description).to eq("This is the description for plant 1")
-      expect(page).to have_content("Price")
-      price = find("#product_form_price").value
-      expect(price).to eq("19.99")
-      expect(page).to have_content("Status")
-      status = find("#product_form_status").value
-      category = find("#product_form_category").value
-      expect(page).to have_content("Plants")
-      expect(page).to have_content("Active")
-      expect(page).to have_content("Image Url")
-      url = find("#product_form_image_url").value
-      expect(url).to eq("plants/plant-2.jpg")
-      expect(page).to have_button("Edit Product")
+    description = find("#product_form_description").value
+    expect(description).to eq("This is the description for plant 1")
+    expect(page).to have_content("Price")
+    price = find("#product_form_price").value
+    expect(price).to eq("19.99")
+    expect(page).to have_content("Status")
+    status = find("#product_form_status").value
+    category = find("#product_form_category").value
+    expect(page).to have_content("Plants")
+    expect(page).to have_content("Active")
+    expect(page).to have_content("Image Url")
+    url = find("#product_form_image_url").value
+    expect(url).to eq("plants/plant-2.jpg")
+    expect(page).to have_button("Edit Product")
 
-      find('input[type="text"][name*="name"]').set("Richard")
-      find('input[type="text"][name*="description"]').set("A boat.")
-      find('input[type="text"][name*="price"]').set("12.99")
-      find('input[type="text"][name*="image_url"]').set("")
-      select "Food", from: "product[category_id]"
-      select "Retired", from: "product[status]"
-      click_button "Edit Product"
+    find('input[type="text"][name*="name"]').set("Richard")
+    find('input[type="text"][name*="description"]').set("A boat.")
+    find('input[type="text"][name*="price"]').set("12.99")
+    find('input[type="text"][name*="image_url"]').set("")
+    select "Food", from: "product[category_id]"
+    select "Retired", from: "product[status]"
+    click_button "Edit Product"
 
-      expect(current_path).to eq(admin_products_path)
-      within("tr", text: "Richard") do
+    expect(current_path).to eq(admin_products_path)
+    within("tr", text: "Richard") do
       expect(page).to have_css("img[src*='default_image.jpg']")
       expect(page).to have_content("Richard")
       expect(page).to have_content("A boat.")
