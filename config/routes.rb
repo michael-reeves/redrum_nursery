@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get "/admin/paid-orders", to: "admin/orders#index_paid"
   get "/admin/cancelled-orders", to: "admin/orders#index_cancelled"
   get "/admin/completed-orders", to: "admin/orders#index_completed"
+
+  resources :charges
 end
