@@ -1,5 +1,32 @@
 <div class="container">
-  <h3>Your Dashboard</h3>
-  <p><%= "Name: #{current_user.first_name} #{current_user.last_name}" %></p>
-  <p><%= "Email: #{current_user.email}" %></p>
+  <h1 class="text-center">Your Dashboard</h1>
+  <div class="well col-sm-6 col-sm-offset-3">
+    <h3><%= current_user.full_name %></h3>
+    <p><%= current_user.email %></p>
+    <div id="billing-address" class="col-sm-6">
+      <% current_user.addresses.billing.each do |billing| %>
+        <h4>Billing Address</h4>
+        <p><%= billing.address_1 %></p>
+        <p><%= billing.address_2 %></p>
+        <p><%= billing.city %></p>
+        <p><%= billing.state %></p>
+        <p><%= billing.zip_code %></p>
+      <% end %>
+    </div>
+    <div id="shipping-address" class="col-sm-6">
+      <% current_user.addresses.shipping.each do |shipping| %>
+        <h4>Shipping Address</h4>
+        <p><%= shipping.address_1 %></p>
+        <p><%= shipping.address_2 %></p>
+        <p><%= shipping.city %></p>
+        <p><%= shipping.state %></p>
+        <p><%= shipping.zip_code %></p>
+      <% end %>
+    </div>
+  <div class="col-sm-12">
+    <%= link_to "Edit Account",
+        edit_user_path(current_user),
+        class: "btn btn-success" %>
+  </div>
+  </div>
 </div>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "static_pages#index"
   resources :products, only: [:index, :show]
   resources :categories, param: :slug, only: [:show]
-  resources :users, only: [:index, :new, :create]
+  resources :users, only: [:index, :new, :create, :edit, :update]
   resources :orders, only: [:index, :show, :create]
 
   get "/dashboard", to: "users#show"

@@ -14,13 +14,41 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       flash.now[:warning] = @user.errors.full_messages.join(". ")
+
       render :new
     end
   end
 
   def show
     unless current_user
-      render file: "public/404.html", status: :not_found, layout: false
+      render file: "public/404.html", status: :not_found, layout: true
+    end
+  end
+
+  def edit
+    if current_user
+      @user = current_user
+    else
+      render file: "public/404.html", status: :not_found, layout: true
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    billing = @user.addresses.billing.last
+    shipping = @user.addresses.shipping.last
+
+    if (@user.update_attributes(user_params) &&
+        billing.update_attributes(billing_params) &&
+        shipping.update_attributes(shipping_params)
+       )
+      flash[:success] = "Your account has been updated."
+
+      redirect_to dashboard_path
+    else
+      flash.now[:warning] = @user.errors.full_messages.join(". ")
+
+      render :edit
     end
   end
 
@@ -31,5 +59,21 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :email,
                                  :password)
+  end
+
+  def billing_params
+    params.require(:billing).permit(:address_1,
+                                    :address_2,
+                                    :city,
+                                    :state,
+                                    :zip_code)
+  end
+
+  def shipping_params
+    params.require(:shipping).permit(:address_1,
+                                    :address_2,
+                                    :city,
+                                    :state,
+                                    :zip_code)
   end
 end
