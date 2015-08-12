@@ -17,4 +17,15 @@ class Order < ActiveRecord::Base
       total + (order_item.quantity * order_item.unit_price)
     end
   end
+
+  def available_status_transitions
+    case status
+    when "paid"
+      ["cancelled", "completed"]
+    when "ordered"
+      ["cancelled", "paid"]
+    else
+      []
+    end
+  end
 end
