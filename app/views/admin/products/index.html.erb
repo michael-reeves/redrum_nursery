@@ -1,0 +1,39 @@
+<div class="container">
+ <ol class="breadcrumb">
+   <li><a href="<%= admin_dashboard_path %>">Admin Dashboard</a></li>
+   <li class="active">All Products</li>
+   <li><a href="<%= new_admin_product_path %>">Add New Product</a></li>
+ </ol>
+</div>
+<div class="container">
+  <h1 class="text-center">All Products</h1>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="col-md-2">Image</th>
+          <th class="col-md-2">Name</th>
+          <th class="col-md-4">Description</th>
+          <th class="col-md-1">Price</th>
+          <th class="col-md-1">Category</th>
+          <th class="col-md-1">Status</th>
+          <th class="col-md-1">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= image_tag product.image_url, class:"img-small",
+              alt: "#{product.name} image" %></td>
+            <td><a href="<%= product_path(product) %>"><%= product.name %></a></td>
+            <td class=" word-length"><%= product.description %></td>
+            <td><%= number_to_currency(product.price) %></td>
+            <td><%= product.category.name %></td>
+            <td><%= product.status %></td>
+            <td><%= link_to "edit", edit_admin_product_path(product) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div><!-- /.container -->
