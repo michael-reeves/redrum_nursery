@@ -12,26 +12,26 @@
         <div class="col-sm-1 col-md-2">&nbsp;</div>
       </div>
       <% @cart_items.each do |cart_item| %>
-      <div class="row">
-        <%= form_for(cart_item, url: cart_item_path(cart_item)) do |f| %>
-        <%= image_tag cart_item.image_url, class: "img-responsive col-sm-2 col-md-2" %>
-        <div class="name col-sm-5 col-md-5">
-          <%= cart_item.name %><br>
-          <%= cart_item.description %>
-          <span class="remove-product">
-            <%= link_to "remove", cart_item_path(cart_item), method: :delete %>
-          </span>
-        </div>
-        <div class="item-total col-sm-1 col-md-1">$<%= cart_item.price %></div>
-        <%= f.text_field(:quantity, class: "col-sm-1 col-md-1 quantity") %>
-        <div class="sub-total col-sm-1 col-md-1">
-          $<%= cart_item.item_total %>
-        </div>
-        <div class="col-sm-2 col-md-2">
-          <%= f.submit "update", class: "btn btn-xs btn-success" %>
-        </div>
+        <div class="row">
+          <%= form_for(cart_item, url: cart_item_path(cart_item)) do |f| %>
+            <%= image_tag cart_item.image_url, class: "img-responsive col-sm-2 col-md-2" %>
+            <div class="name col-sm-5 col-md-5">
+              <%= cart_item.name %><br>
+              <%= cart_item.description %>
+              <span class="remove-product">
+                <%= link_to "remove", cart_item_path(cart_item), method: :delete %>
+              </span>
+            </div>
+            <div class="item-total col-sm-1 col-md-1">$<%= cart_item.price %></div>
+            <%= f.text_field(:quantity, class: "col-sm-1 col-md-1 quantity") %>
+            <div class="sub-total col-sm-1 col-md-1">
+              $<%= cart_item.item_total %>
+          </div>
+          <div class="col-sm-2 col-md-2">
+            <%= f.submit "update", class: "btn btn-xs btn-success" %>
+          </div>
         <% end %>
-      </div> <!-- /row -->
+        </div> <!-- /row -->
       <% end %>
       <div class="row">
         <div class="col-sm-offset-9 col-md-offset-9 col-sm-1 col-md-1">Total</div>
@@ -42,6 +42,44 @@
   </div>
 
   <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
-  <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
-  
+
+  <% unless current_user.nil? || cart.items.empty? %>
+    <%= form_tag charges_path, id: "chargeForm" do %> 
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+      <%= hidden_field_tag "stripeToken" %>
+      <%= hidden_field_tag "stripeEmail" %>
+      <%= button_to "Checkout", charges_path, id: "customButton", class: "btn btn-lg btn-primary pull-right" %>
+
+      <script>
+        var handler = StripeCheckout.configure({
+        key: 'pk_test_YgrOz8qCBn0k7cjnNMSdh1Xz',
+        token: function(token) {
+          // Use the token to create the charge with a server-side script.
+          // You can access the token ID with `token.id`
+          document.getElementById("stripeToken").value = token.id
+          document.getElementById("stripeEmail").value = token.id
+          document.getElementById("chargeForm").submit()
+          }
+        });
+
+        $('#customButton').on('click', function(e) {
+          // Open Checkout with further options
+          handler.open({
+          name: 'Redrum Nursery',
+          description: 'Satisfaction Guaranteed',
+          amount: <%= cart.total_price*100 %>
+        });
+        e.preventDefault();
+        });
+
+        // Close Checkout on page navigation
+        $(window).on('popstate', function() {
+          handler.close();
+        });
+      </script>
+
+
+    <% end %>
+  <% end %>
+
 </div><!-- /.container -->
