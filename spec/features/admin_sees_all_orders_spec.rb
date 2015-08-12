@@ -193,9 +193,9 @@ feature "admin can see all orders" do
     end
 
     status = find("table").first(".order-status").text
-      expect(status).not_to eq("Ordered")
-      expect(status).not_to eq("Paid")
-      expect(status).not_to eq("Cancelled")
+    expect(status).not_to eq("Ordered")
+    expect(status).not_to eq("Paid")
+    expect(status).not_to eq("Cancelled")
   end
 
   scenario "and there are links to transition the status" do
@@ -219,7 +219,7 @@ feature "admin can see all orders" do
       expect(page).to_not have_link("Completed")
     end
 
-     within("tr", text: "# #{@order_4.id}") do
+    within("tr", text: "# #{@order_4.id}") do
       expect(page).to_not have_link("Ordered")
       expect(page).to_not have_link("Paid")
       expect(page).to_not have_link("Cancel")
