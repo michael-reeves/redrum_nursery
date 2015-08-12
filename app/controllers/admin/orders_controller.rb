@@ -28,6 +28,10 @@ class Admin::OrdersController < Admin::BaseController
     render :index
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def update
     order = Order.find(params[:id])
     order.status = params[:status]

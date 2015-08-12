@@ -22,16 +22,16 @@ feature "Visitor" do
       expect(current_path).to eq(cart_path)
 
       within(".name") do
-        expect(page).to have_content(item1.name)
+        expect(page).to have_content("Plant 1")
       end
 
-      within(".row", text: item1.name) do
+      within(".row", text: "Plant 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
       end
 
       within(".total") do
-        expect(page).to have_content("$#{item1.price * 2}")
+        expect(page).to have_content("$39.98")
       end
     end
 
@@ -53,18 +53,18 @@ feature "Visitor" do
       find("#cart").click
 
       expect(current_path).to eq(cart_path)
-      within(".row", text: item1.name) do
-        expect(page).to have_content(item1.name)
+      within(".row", text: "Plant 1") do
+        expect(page).to have_content("Plant 1")
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
-        expect(page).to have_content("$#{item1.price}")
+        expect(page).to have_content("$39.98")
       end
 
-      within(".row", text: item2.name) do
-        expect(page).to have_content(item2.name)
+      within(".row", text: "Food 3") do
+        expect(page).to have_content("Food 3")
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
-        expect(page).to have_content("$#{item2.price}")
+        expect(page).to have_content("$39.99")
       end
     end
 
@@ -78,21 +78,21 @@ feature "Visitor" do
 
       find("#cart").click
 
-      within(".row", text: item1.name) do
+      within(".row", text: "Plant 1") do
         find(".quantity").set("4")
         click_button("update")
       end
 
       expect(current_path).to eq(cart_path)
 
-      within(".row", text: item1.name) do
+      within(".row", text: "Plant 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("4")
-        expect(page).to have_content("$#{item1.price * 4}")
+        expect(page).to have_content("$79.96")
       end
 
       within(".total") do
-        expect(page).to have_content("$#{item1.price * 4 + item2.price}")
+        expect(page).to have_content("$119.95")
       end
     end
 
@@ -103,17 +103,17 @@ feature "Visitor" do
       click_button "Add to Cart"
 
       find("#cart").click
-      within(".row", text: item.name) do
+      within(".row", text: "Plant 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
-        expect(page).to have_content("$#{item.price * 2}")
+        expect(page).to have_content("$39.98")
       end
 
       within(".total") do
-        expect(page).to have_content("$#{item.price * 2}")
+        expect(page).to have_content("$39.98")
       end
 
-      within(".row", text: item.name) do
+      within(".row", text: "Plant 1") do
         find(".quantity").set("1")
         click_button("update")
       end
@@ -124,12 +124,52 @@ feature "Visitor" do
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
         within(".sub-total") do
-          expect(page).to have_content("$#{item.price}")
+          expect(page).to have_content("$19.99")
         end
       end
 
       within(".total") do
-        expect(page).to have_content("$#{item.price}")
+        expect(page).to have_content("$19.99")
+      end
+    end
+
+    scenario "adds an item and attempts to decrease the quantity negative or zero" do
+      item = @plants.products.first
+      visit product_path(item)
+      click_button "Add to Cart"
+
+      find("#cart").click
+
+      within(".row", text: "Plant 1") do
+        find(".quantity").set("0")
+        click_button("update")
+      end
+
+      expect(current_path).to eq(cart_path)
+      expect(page).to have_content("Cannot set quantity below one.")
+
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("1")
+        within(".sub-total") do
+          expect(page).to have_content("$19.99")
+        end
+      end
+
+      within(".row", text: "Plant 1") do
+        find(".quantity").set("-5")
+        click_button("update")
+      end
+
+      expect(current_path).to eq(cart_path)
+      expect(page).to have_content("Cannot set quantity below one.")
+
+      within(".row", text: "Plant 1") do
+        quantity = find(".quantity").value
+        expect(quantity).to eq("1")
+        within(".sub-total") do
+          expect(page).to have_content("$19.99")
+        end
       end
     end
 
@@ -139,33 +179,33 @@ feature "Visitor" do
       click_button "Add to Cart"
 
       find("#cart").click
-      within(".row", text: item.name) do
+      within(".row", text: "Plant 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
-        expect(page).to have_content("$#{item.price}")
+        expect(page).to have_content("$19.99")
       end
 
       within(".total") do
-        expect(page).to have_content("$#{item.price}")
+        expect(page).to have_content("$19.99")
       end
 
-      within(".row", text: item.name) do
+      within(".row", text: "Plant 1") do
         click_link("remove")
       end
 
       expect(current_path).to eq(cart_path)
 
       within(".flash") do
-        expect(page).to have_content("Successfully removed #{item.name} " \
+        expect(page).to have_content("Successfully removed Plant 1 " \
           "from your cart")
-        expect(page).to have_link(item.name)
+        expect(page).to have_link("Plant 1")
         expect(page).to have_xpath("//a[@href=\"/products/#{item.id}\"]")
       end
 
       expect(page).not_to have_content(item.description)
 
       within(".total") do
-        expect(page).not_to have_content("$#{item.price}")
+        expect(page).not_to have_content("$19.99")
         expect(page).to have_content("$0")
       end
     end

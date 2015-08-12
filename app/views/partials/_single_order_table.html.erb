@@ -1,0 +1,31 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Product Details</th>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td>
+          <a href="<%= product_path(order_item.product) %>">
+            <%= order_item.product.name %>
+          </a>
+        </td>
+        <td><%= @order.status %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.unit_price) %></td>
+        <td><%= number_to_currency(order_item.subtotal) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan=3></td>
+      <th>Total</th>
+      <th class="total"><%= number_to_currency(@order.total) %></th>
+    </tr>
+  </tbody>
+</table>
