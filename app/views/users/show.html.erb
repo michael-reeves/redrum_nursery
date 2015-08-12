@@ -1,30 +1,32 @@
 <div class="container">
-  <h3 class="text-center">Your Dashboard</h3>
+  <h1 class="text-center">Your Dashboard</h1>
   <div class="well col-sm-6 col-sm-offset-3">
-    <p>Name: <%= current_user.full_name %></p>
-    <p>Email: <%= current_user.email %></p>
+    <h3><%= current_user.full_name %></h3>
+    <p><%= current_user.email %></p>
     <div id="billing-address" class="col-sm-6">
       <% current_user.addresses.billing.each do |billing| %>
         <h4>Billing Address</h4>
-        <p>Address 1: <%= billing.address_1 %></p>
-        <p>Address 2: <%= billing.address_2 %></p>
-        <p>City: <%= billing.city %></p>
-        <p>State: <%= billing.state %></p>
-        <p>Zip Code: <%= billing.zip_code %></p>
+        <p><%= billing.address_1 %></p>
+        <p><%= billing.address_2 %></p>
+        <p><%= billing.city %></p>
+        <p><%= billing.state %></p>
+        <p><%= billing.zip_code %></p>
       <% end %>
     </div>
     <div id="shipping-address" class="col-sm-6">
       <% current_user.addresses.shipping.each do |shipping| %>
         <h4>Shipping Address</h4>
-        <p>Address 1: <%= shipping.address_1 %></p>
-        <p>Address 2: <%= shipping.address_2 %></p>
-        <p>City: <%= shipping.city %></p>
-        <p>State: <%= shipping.state %></p>
-        <p>Zip Code: <%= shipping.zip_code %></p>
+        <p><%= shipping.address_1 %></p>
+        <p><%= shipping.address_2 %></p>
+        <p><%= shipping.city %></p>
+        <p><%= shipping.state %></p>
+        <p><%= shipping.zip_code %></p>
       <% end %>
     </div>
   <div class="col-sm-12">
-    <%= link_to "Update Account", "#", class: "btn btn-success" %>
+    <%= link_to "Edit Account",
+        edit_user_path(current_user),
+        class: "btn btn-success" %>
   </div>
   </div>
 </div>

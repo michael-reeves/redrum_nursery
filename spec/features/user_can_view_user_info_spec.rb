@@ -20,8 +20,10 @@ feature "User can view User info" do
                           city:      "New York",
                           state:     "NY",
                           zip_code:  "12345")
+
     allow_any_instance_of(ApplicationController)
-      .to receive(:current_user).and_return(user)
+      .to receive(:current_user)
+      .and_return(user)
   end
 
   scenario "User visits Dashboard and sees all User info" do
