@@ -260,4 +260,25 @@ order_3.order_items.create(product_id: product_3.id,
                            quantity: 4,
                            unit_price: product_3.price)
 
+order_4 = user.orders.create(status: "ordered")
+order_4.order_items.create(product_id: product_1.id,
+                           quantity: 3,
+                           unit_price: product_1.price)
 
+order_4.order_items.create(product_id: product_2.id,
+                           quantity: 2,
+                           unit_price: product_2.price)
+
+order_4.order_items.create(product_id: product_3.id,
+                           quantity: 1,
+                           unit_price: product_3.price)
+
+order_5 = user.orders.create(status: "ordered")
+order_5.order_items.create(product_id: product_1.id,
+                           quantity: 10,
+                           unit_price: product_1.price)
+
+order_6 = user.orders.create(status: "ordered")
+order_6.order_items.create(product_id: product_3.id,
+                           quantity: 4,
+                           unit_price: product_3.price)
