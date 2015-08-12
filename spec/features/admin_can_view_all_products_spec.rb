@@ -4,10 +4,10 @@ require "factory_helper"
 feature "Admin can view all Products from Admin Dashboard" do
   before do
     admin = User.create(first_name: "Mike",
-                      last_name: "Dorrance",
-                      email: "mike@mike.com",
-                      password: "12345678",
-                      role: "admin")
+                        last_name: "Dorrance",
+                        email: "mike@mike.com",
+                        password: "12345678",
+                        role: "admin")
     build_products
 
     allow_any_instance_of(ApplicationController)
@@ -22,9 +22,7 @@ feature "Admin can view all Products from Admin Dashboard" do
 
   scenario "Admin clicks on View All Products and sees all products" do
     product1 = @plants.products.first
-    product2 = @food.products.first
-    product3 = @accessories.products.first
-
+    
     click_link "View All Products"
 
     expect(current_path).to eq(admin_products_path)
