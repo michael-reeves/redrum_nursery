@@ -7,8 +7,43 @@
       <%= @order.created_at.strftime("%B %e, %Y at %l:%M %p") %>
     </h5>
   </div>
-  <br/>
-  <div class="table-responsive">
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h5><strong>Billing Address</strong></h5>
+      <% @order.user.addresses.billing.each do |address| %>
+        <p>
+          <%= address.address_1 %><br>
+          <% if address.address_2 %>
+            <%= address.address_2 %><br>
+          <% end %>
+          <%= address.city %>,
+          <%= address.state %>
+          <%= address.zip_code %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h5><strong>Shipping Address</strong></h5>
+      <% @order.user.addresses.shipping.each do |address| %>
+      <p>
+        <%= address.address_1 %><br>
+        <% if address.address_2 %>
+          <%= address.address_2 %><br>
+        <% end %>
+        <%= address.city %>,
+        <%= address.state %>
+        <%= address.zip_code %>
+      </p>
+      <% end %>
+    </div>
+  </div><!-- /row -->
+
+  <br><br>
+
+<div class="table-responsive">
     <%= render partial: "partials/single_order_table" %>
     <% if @order.status == "cancelled" || @order.status == "completed" %>
       <div class="other-notes well">
