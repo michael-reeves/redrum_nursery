@@ -221,7 +221,6 @@ user.addresses.create(type_of: 0,
                       state: "Colorado",
                       zip_code: "80202")
 
-
 user.addresses.create(type_of: 1,
                       address_1: "123 Poppin Ln",
                       city: "Denver",
