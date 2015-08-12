@@ -1,0 +1,83 @@
+<div class="container">
+  <h1 class="text-center">Edit Account</h3>
+  <div class="well col-sm-12">
+    <div id="login-info" class="col-sm-4">
+      <fieldset>
+        <legend>Login Info</legend>
+        <%= form_for @user, url: user_path do |f| %>
+          <div class="form-group">
+            <%= f.label :first_name, "First Name" %>
+            <%= f.text_field :first_name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :last_name, "Last Name" %>
+            <%= f.text_field :last_name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "Password (min 8 characters)" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+        <%= f.submit "Update Account", class: "btn btn-success" %>
+      </fieldset>
+    </div>
+    <div id="billing-info" class="col-sm-4">
+      <%= fields_for :billing, @user.addresses.billing.last do |b| %>
+        <fieldset>
+          <legend>Billing Address</legend>
+          <div class="form-group">
+            <%= b.label :address_1 %>
+            <%= b.text_field :address_1, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= b.label :address_2 %>
+            <%= b.text_field :address_2, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= b.label :city %>
+            <%= b.text_field :city, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= b.label :state %>
+            <%= b.text_field :state, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= b.label :zip_code %>
+            <%= b.text_field :zip_code, class: "form-control" %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+    <div id="shipping-info" class="col-sm-4">
+      <%= fields_for :shipping, @user.addresses.shipping.last do |s| %>
+        <fieldset>
+          <legend>Shipping Address</legend>
+          <div class="form-group">
+            <%= s.label :address_1 %>
+            <%= s.text_field :address_1, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= s.label :address_2 %>
+            <%= s.text_field :address_2, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= s.label :city %>
+            <%= s.text_field :city, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= s.label :state %>
+            <%= s.text_field :state, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= s.label :zip_code %>
+            <%= s.text_field :zip_code, class: "form-control" %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
