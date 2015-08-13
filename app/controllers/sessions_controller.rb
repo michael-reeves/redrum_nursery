@@ -8,11 +8,11 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Welcome back to Redrum Nursery, #{user.first_name}" \
         " #{user.last_name}!"
-        if current_admin?
-          redirect_to admin_dashboard_path
-        else
-          redirect_to dashboard_path
-        end
+      if current_admin?
+        redirect_to admin_dashboard_path
+      else
+        redirect_to dashboard_path
+      end
     else
       flash[:warning] = "Unable to Login with this Email and" \
         " Password combination."
