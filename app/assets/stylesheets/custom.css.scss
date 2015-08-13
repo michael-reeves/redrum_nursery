@@ -89,6 +89,21 @@ h6 {
   white-space: nowrap;
 }
 
+.feature-card.thumbnail {
+position: relative;
+}
+
+.product-card.thumbnail {
+  height: 450px;
+  position: relative;
+}
+
+.btm-right {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+}
+
 .alert {
   padding-left: 5%;
 }
@@ -233,7 +248,7 @@ footer {
 
 @media(min-width:768px) {
   .product-card.thumbnail {
-    height: 340px;
+    height: 380px;
   }
   .feature-card.thumbnail {
     height: 250px;
@@ -241,10 +256,13 @@ footer {
 }
 
 @media(min-width:990px) {
-  .product-card.thumbnail {
-    height: 405px;
-  }
   .feature-card.thumbnail {
-    height: 330px;
+    height: 340px;
+  }
+}
+
+@media(min-width:1190px) {
+  .feature-card.thumbnail {
+    height: 375px;
   }
 }
