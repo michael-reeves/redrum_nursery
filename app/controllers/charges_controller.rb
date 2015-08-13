@@ -45,7 +45,10 @@ class ChargesController < ApplicationController
   private
 
   def notify_boss
-    client = Twilio::REST::Client.new ENV["twilio_account_sid"], ENV["twilio_auth_token"]
-    message = client.messages.create from: '17723245092', to: '17724183162', body: "You've received a $#{(@order.total)} order!"
+    client = Twilio::REST::Client.new(ENV["twilio_account_sid"],
+                                      ENV["twilio_auth_token"])
+    client.messages.create(from: "17723245092",
+                           to: "17724183162",
+                           body: "You've received a $#{(@order.total)} order!")
   end
 end
