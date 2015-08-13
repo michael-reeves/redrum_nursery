@@ -1,10 +1,18 @@
 <div class="container">
   <h1 class="text-center">Edit Account</h3>
-  <div class="well col-sm-12">
-    <div id="login-info" class="col-sm-4">
+  <% if @billing && @shipping %>
+    <div class="well col-sm-12">
+      <div id="login-info" class="col-sm-4">
+  <% elsif @billing || @shipping %>
+    <div class="well col-sm-8 col-sm-offset-2">
+      <div id="login-info" class="col-sm-6">
+  <% else %>
+    <div class="well col-sm-4 col-sm-offset-4">
+      <div id="login-info" class="col-sm-12">
+  <% end %>
       <fieldset>
         <legend>Login Info</legend>
-        <%= form_for @user, url: user_path do |f| %>
+        <%= form_for @user, url: account_path, method: :patch do |f| %>
           <div class="form-group">
             <%= f.label :first_name, "First Name" %>
             <%= f.text_field :first_name, class: "form-control" %>
@@ -21,11 +29,21 @@
             <%= f.label :password, "Password (min 8 characters)" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
-        <%= f.submit "Update Account", class: "btn btn-success" %>
+          <%= f.submit "Update Login Info", class: "btn btn-success" %>
+          <% unless @billing && @shipping %>
+            <%= link_to "Add Address", new_address_path, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
       </fieldset>
     </div>
-    <div id="billing-info" class="col-sm-4">
-      <%= fields_for :billing, @user.addresses.billing.last do |b| %>
+
+    <% if @billing && @shipping %>
+      <div id="billing-info" class="col-sm-4">
+    <% elsif @billing %>
+      <div id="billing-info" class="col-sm-6">
+    <% end %>
+    <% if @billing %>
+      <%= form_for @billing, url: address_path(@billing), method: :patch do |b| %>
         <fieldset>
           <legend>Billing Address</legend>
           <div class="form-group">
@@ -48,11 +66,19 @@
             <%= b.label :zip_code %>
             <%= b.text_field :zip_code, class: "form-control" %>
           </div>
+        <%= b.submit "Update Billing Address", class: "btn btn-success" %>
         </fieldset>
       <% end %>
     </div>
-    <div id="shipping-info" class="col-sm-4">
-      <%= fields_for :shipping, @user.addresses.shipping.last do |s| %>
+    <% end %>
+
+    <% if @billing && @shipping %>
+      <div id="shipping-info" class="col-sm-4">
+    <% elsif @shipping %>
+      <div id="shipping-info" class="col-sm-6">
+    <% end %>
+    <% if @shipping %>
+      <%= form_for @shipping, url: address_path(@shipping), method: :patch do |s| %>
         <fieldset>
           <legend>Shipping Address</legend>
           <div class="form-group">
@@ -75,6 +101,7 @@
             <%= s.label :zip_code %>
             <%= s.text_field :zip_code, class: "form-control" %>
           </div>
+        <%= s.submit "Update Shipping Address", class: "btn btn-success" %>
         </fieldset>
       <% end %>
     </div>
