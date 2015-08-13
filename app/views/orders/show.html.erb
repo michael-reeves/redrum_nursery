@@ -41,7 +41,7 @@
   </div><!-- /row -->
 
   <br><br>
-  
+
   <div class="table-responsive">
     <%= render partial: "partials/single_order_table" %>
     <% if @order.status == "cancelled" || @order.status == "completed" %>
@@ -55,7 +55,19 @@
     <% end %>
   </div>
   <%= link_to "Continue Shopping", products_path,
-    class: "btn btn-lg btn-primary pull-left" %>
+              class: "btn btn-lg btn-primary pull-left" %>
   <%= link_to "Dashboard", dashboard_path,
-    class: "btn btn-lg btn-success pull-right" %>
+              class: "btn btn-lg btn-success pull-right" %>
 </div><!-- /.container -->
+
+<% if @order.status == "ordered" %>
+  <%= form_tag charges_path do %>
+    <%= hidden_field_tag :order_id, @order.id %>
+    <script src="https://checkout.stripe.com/checkout.js"
+            class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Redrum Nursery"
+            data-amount="<%= @order.total*100 %>">
+    </script>
+  <% end %>
+<% end %>

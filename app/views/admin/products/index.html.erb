@@ -24,7 +24,7 @@
         <% @products.each do |product| %>
           <tr>
             <td><%= image_tag product.image_url, class:"img-small",
-              alt: "#{product.name} image" %></td>
+                              alt: "#{product.name} image" %></td>
             <td><a href="<%= product_path(product) %>"><%= product.name %></a></td>
             <td class=" word-length"><%= product.description %></td>
             <td><%= number_to_currency(product.price) %></td>

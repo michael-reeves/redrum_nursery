@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, param: :slug, only: [:show]
-  resources :orders, only: [:index, :show, :create]
+  resources :orders, only: [:index, :show]
   resources :cart_items, only: [:create, :update, :destroy]
   resources :addresses, only: [:new, :update, :create]
 
@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   get "/admin/paid-orders",      to: "admin/orders#index_paid"
   get "/admin/cancelled-orders", to: "admin/orders#index_cancelled"
   get "/admin/completed-orders", to: "admin/orders#index_completed"
+
+  resources :charges
 end

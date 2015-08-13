@@ -221,6 +221,10 @@ h6 {
   padding: 8px;
 }
 
+.cart-row {
+  padding-top: 10px;
+}
+
 // Pricing Page Styles
 
 .price {
@@ -269,18 +273,27 @@ footer {
   .product-card.thumbnail {
     height: 380px;
   }
+  
   .feature-card.thumbnail {
-    height: 250px;
+    height: 280px;
   }
 }
 
 @media(min-width:990px) {
+  .product-card.thumbnail {
+    height: 410px;
+  }
+
   .feature-card.thumbnail {
     height: 340px;
   }
 }
 
 @media(min-width:1190px) {
+  .product-card.thumbnail {
+    height: 435px;
+  }
+
   .feature-card.thumbnail {
     height: 375px;
   }
