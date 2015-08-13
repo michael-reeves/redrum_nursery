@@ -1,8 +1,8 @@
 <div class="container">
-  <h1 class="text-center">Welcome to Redrum Nursery</h3>
+  <h1 class="text-center">Welcome to Redrum Nursery</h1>
   <p class="lead text-center">Create Account</p>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for @user do |f| %>
+    <%= form_for @user, url: account_path do |f| %>
     <div class="form-group">
       <%= f.label :first_name, "First Name" %>
       <%= f.text_field :first_name, class: "form-control" %>
