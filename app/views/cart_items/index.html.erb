@@ -34,17 +34,19 @@
           <%= f.submit "update", class: "btn btn-xs btn-success" %>
         </div>
         <% end %>
-        </div> <!-- /row -->
+      </div> <!-- /row -->
       <% end %>
       <div class="row">
-        <div class="col-sm-offset-9 col-md-offset-9 col-sm-1 col-md-1">Total</div>
-        <div class="col-sm-1 col-md-1 total"><%= number_to_currency(cart.total_price) %></div>
+        <div class="col-sm-offset-9 col-md-offset-9 col-sm-1 col-md-1">
+          Total
+        </div>
+        <div class="col-sm-1 col-md-1 total">
+          <%= number_to_currency(cart.total_price) %>
+        </div>
       </div> <!-- /row -->
     </div> <!-- /table -->
-
   </div>
 
-<<<<<<< HEAD
   <%= link_to "Continue Shopping", products_path,
               class: "btn btn-lg btn-primary pull-left" %>
 
@@ -84,12 +86,6 @@
         });
       </script>
 
-
     <% end %>
   <% end %>
-=======
-  <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
-  <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
->>>>>>> master
-
 </div><!-- /.container -->
