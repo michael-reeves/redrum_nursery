@@ -9,6 +9,7 @@
   </div> <!-- /row -->
   <br/>
   <h5><strong>User:</strong> <%= @order.user.full_name %></h5>
+  <button onClick="call()">Make Call</button>
 
   <div class="row">
     <div class="col-md-6">
@@ -58,3 +59,16 @@
     </div> <!-- /.table -->
   </div> <!-- /.row -->
 </div><!-- /.container -->
+
+<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+
+<script>
+// works on IE9 and above
+document.addEventListener("DOMContentLoaded", function(event) {
+    Twilio.Device.setup("<%= @token %>");
+});
+
+function call() {
+    Twilio.Device.connect({id: 123});
+}
+</script>
