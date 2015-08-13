@@ -39,9 +39,7 @@ feature "user sees a single past order" do
     end
 
     scenario "user is able to see past order details" do
-      visit orders_path
-
-      expect(current_path).to eq(orders_path)
+      visit dashboard_path
 
       within("td.order-details-link") do
         click_link("View Order Details")

@@ -14,7 +14,7 @@ feature "Admin can view Admin Dashboard" do
     fill_in "Password", with: "password"
     click_button "Login"
 
-    visit "/admin/dashboard"
+    # visit "/admin/dashboard"
 
     expect(current_path).to eq("/admin/dashboard")
     expect(page).to have_content("Admin Dashboard")
