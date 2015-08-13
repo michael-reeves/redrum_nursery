@@ -1,9 +1,7 @@
 class ChargesController < ApplicationController
   def create
-    # @order = Order.find(params[:order_id])
     total = cart.total_price
     total_in_cents = total * 100
-    # @order.update(status: "paid")
 
     # Amount in cents
     @amount = total_in_cents.to_i
