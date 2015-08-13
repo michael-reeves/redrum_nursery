@@ -39,6 +39,10 @@ gem 'puma'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+gem 'twilio-ruby'
+
+gem 'figaro'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

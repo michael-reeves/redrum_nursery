@@ -19,11 +19,11 @@ class ChargesController < ApplicationController
     )
 
     if charge["paid"] == true
-      order = Order.create(user_id: current_user.id,
+      @order = Order.create(user_id: current_user.id,
                            status: "paid")
 
       cart.cart_items.each do |cart_item|
-        OrderItem.create(order_id: order.id,
+        OrderItem.create(order_id: @order.id,
                          product_id: cart_item.id,
                          quantity: cart_item.quantity,
                          unit_price: cart_item.price)
@@ -33,11 +33,19 @@ class ChargesController < ApplicationController
       cart.clear
 
       flash[:success] = "Your payment was successful and your order is placed."
-      redirect_to order_path(order)
+      notify_boss
+      redirect_to order_path(@order)
     end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to cart_path
+  end
+
+  private
+
+  def notify_boss
+    client = Twilio::REST::Client.new ENV["twilio_account_sid"], ENV["twilio_auth_token"]
+    message = client.messages.create from: '17723245092', to: '17724183162', body: "You've received a $#{(@order.total)} order!"
   end
 end

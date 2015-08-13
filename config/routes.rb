@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   get "/admin/completed-orders", to: "admin/orders#index_completed"
 
   resources :charges
+
+  post 'twilio/connect_customer' => 'twilio#connect_customer'
 end
