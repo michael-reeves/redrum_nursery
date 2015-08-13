@@ -8,13 +8,13 @@ feature "Admin can view Admin Dashboard" do
                 password: "password",
                 role: 1)
 
-    visit "/login"
+    visit login_path
 
     fill_in "Email", with: "admin@admin.com"
     fill_in "Password", with: "password"
     click_button "Login"
 
-    visit "/admin/dashboard"
+    visit admin_dashboard_path
 
     expect(current_path).to eq("/admin/dashboard")
     expect(page).to have_content("Admin Dashboard")
@@ -27,19 +27,19 @@ feature "Admin can view Admin Dashboard" do
                 password: "password",
                 role: 0)
 
-    visit "/login"
+    visit login_path
 
     fill_in "Email", with: "jane@doe.com"
     fill_in "Password", with: "password"
     click_button "Login"
 
-    visit "/admin/dashboard"
+    visit admin_dashboard_path
 
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 
   scenario "Non-user sees 404 page for /admin/dashboard" do
-    visit "/admin/dashboard"
+    visit admin_dashboard_path
 
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end

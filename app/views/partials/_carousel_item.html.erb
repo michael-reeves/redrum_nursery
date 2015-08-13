@@ -1,14 +1,23 @@
 <div class="col-sm-4 col-lg-4 col-md-4">
   <div class="feature-card thumbnail">
-    <%= image_tag featured_product.image_url, class: "img-responsive",
+    <%= image_tag featured_product.image_url, class: "img-responsive", 
                   alt: "#{featured_product.name} image" %>
-    <div class="caption">
+    <div class="caption clearfix">
       <h4 class="pull-right">
         <%= number_to_currency(featured_product.price) %>
       </h4>
       <h4>
         <%= link_to featured_product.name, product_path(featured_product) %>
       </h4>
+    </div>
+    <div class="clearfix btm-right">
+      <% if featured_product.inactive? %>
+      <%= button_to "Retired", {}, class: "btn btn-primary btn-lg",
+          disabled: "disabled" %>
+      <% else %>
+      <%= button_to "Add to Cart", cart_items_path(product_id: featured_product.id),
+          class: "btn btn-primary btn-sm pull-right" %>
+      <% end %>
     </div>
   </div>
 </div>

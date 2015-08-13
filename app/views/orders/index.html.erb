@@ -18,7 +18,7 @@
             <td><%= order.created_at.strftime("%b %d, %Y") %></td>
             <td><%= order.id %></td>
             <td><%= order.status %></td>
-            <td>$<%= order.total %></td>
+            <td><%= number_to_currency(order.total) %></td>
             <td class="order-details-link">
               <a href="<%= order_path(order) %>">
                 <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
@@ -32,7 +32,7 @@
     </table>
 
   </div>
-  <%= link_to "Continue Shopping", products_path,
+  <%= link_to "Continue Shopping", products_path, 
               class: "btn btn-lg btn-primary pull-left" %>
   <%= link_to "Dashboard", dashboard_path,
               class: "btn btn-lg btn-success pull-right" %>

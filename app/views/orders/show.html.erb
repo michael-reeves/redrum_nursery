@@ -1,6 +1,5 @@
 <div class="container">
   <h1 class="text-center">Order Details</h1>
-
   <div class="row">
     <h5 class="col-md-3"><strong>Order ID: </strong># <%= @order.id %></h5>
     <h5 class="col-md-4 col-md-offset-5"><strong>Purchase Date/Time: </strong>
@@ -43,7 +42,7 @@
 
   <br><br>
 
-<div class="table-responsive">
+  <div class="table-responsive">
     <%= render partial: "partials/single_order_table" %>
     <% if @order.status == "cancelled" || @order.status == "completed" %>
       <div class="other-notes well">
@@ -54,14 +53,12 @@
         </p>
       </div>
     <% end %>
-
   </div>
   <%= link_to "Continue Shopping", products_path,
               class: "btn btn-lg btn-primary pull-left" %>
   <%= link_to "Dashboard", dashboard_path,
               class: "btn btn-lg btn-success pull-right" %>
 </div><!-- /.container -->
-
 
 <% if @order.status == "ordered" %>
   <%= form_tag charges_path do %>

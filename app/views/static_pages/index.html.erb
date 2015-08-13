@@ -5,34 +5,28 @@
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">
-            Welcome to Redrum Nursery
+            Welcome to <br><span class="blood-xl">Redrum Nursery</span>
           </h1>
         </div>
       </div>
     </div>
   </div>
 </header>
-
 <!-- Page Content -->
 <div class="container">
-
-  <!-- Marketing Icons Section -->
-  <!-- Call to Action Section -->
   <br>
   <div class="well">
     <div class="row">
       <div class="col-md-8">
-        <h4>Receive free coupons, free shipping, and a T-Shirt</h4>
+        <h4>Receive free coupons, free shipping, and a T-Shirt!</h4>
       </div>
       <div class="col-md-4">
-        <%= link_to "Become a Redrum MVP", new_user_path,
+        <%= link_to "Become a Redrum MVP", account_new_path,
             class: "btn btn-lg btn-success btn-block"%>
       </div>
     </div>
   </div>
-
   <hr>
-
   <div class="row">
     <div class="col-md-3">
       <div id="food-panel" class="panel panel-primary">
@@ -68,14 +62,9 @@
       </div>
     </div>
   </div><!-- /.row -->
-
-
   <!-- Featured Products Section -->
   <div class="row">
-
     <%= render "partials/product_carousel" %>
-
   </div>
-
   <hr>
 </div><!-- /.container -->

@@ -7,7 +7,7 @@ feature "a user can login" do
                 email: "jane@doe.com",
                 password: "12345678")
 
-    visit "/"
+    visit root_path
     click_link "Login"
 
     expect(current_path).to eq(login_path)
@@ -25,7 +25,7 @@ feature "a user can login" do
       expect(page).to have_content("Welcome back to Redrum Nursery, Jane Doe!")
     end
     within(".navbar-right") do
-      expect(page).to have_content("Logged in as Jane Doe")
+      expect(page).to have_link("Logged in as Jane Doe")
     end
     expect(page).to have_content("Jane")
     expect(page).to have_content("Doe")
@@ -35,7 +35,7 @@ feature "a user can login" do
   end
 
   scenario "a visitor without an account can not login" do
-    visit "/"
+    visit root_path
     click_link "Login"
 
     expect(current_path).to eq(login_path)
