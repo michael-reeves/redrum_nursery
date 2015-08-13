@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = current_user
     @billing = @user.addresses.billing.last
     @shipping = @user.addresses.shipping.last
-    
+
     if !@user.authenticate(params[:user][:password])
       flash.now[:warning] =
         "Invalid password. Please re-enter to update your login info."
