@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
       redirect_to account_edit_path
     else
       flash[:warning] = @address.errors.full_messages.join(". ")
-      render :edit
+      redirect_to account_edit_path
     end
   end
 
