@@ -8,7 +8,6 @@ feature "a visitor can create an account" do
 
   scenario "a visitor clicks on the create account button and" \
     " sees create account form" do
-    expect(current_path).to eq(new_user_path)
     expect(page).to have_content("First Name")
     expect(page).to have_content("Last Name")
     expect(page).to have_content("Email")
