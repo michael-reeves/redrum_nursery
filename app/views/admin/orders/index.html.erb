@@ -6,7 +6,7 @@
   <h3 class="text-center">All Orders</h3>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <ul class="nav nav-pills" role="tablist"> 
+      <ul class="nav nav-pills" role="tablist">
         <li role="presentation">
           <a href="<%= admin_orders_path %>">All
             <span class="badge"><%= @orders.count %></span>
@@ -39,8 +39,7 @@
         <% @orders.send(@status).each do |order| %>
           <tr>
             <td>
-              <a href="<%= admin_order_path(order) %>">
-                # <%= order.id %>
+              <a href="<%= admin_order_path(order) %>"> # <%= order.id %>
             </a>
             </td>
             <td class="order-status"><%= order.status.to_s.capitalize %></td>
@@ -51,7 +50,7 @@
                 <%= link_to transition.capitalize,
                             admin_order_path(id: order.id,
                                              status: transition),
-                            method: :patch %>
+                                             method: :patch %>
 
             <% end %>
             </td>

@@ -19,7 +19,8 @@
               <%= cart_item.name %><br>
               <%= cart_item.description %>
               <span class="remove-product">
-                <%= link_to "remove", cart_item_path(cart_item), method: :delete %>
+                <%= link_to "remove", cart_item_path(cart_item),
+                    method: :delete %>
               </span>
             </div>
             <div class="item-total col-sm-1 col-md-1">$<%= cart_item.price %></div>
@@ -41,14 +42,16 @@
 
   </div>
 
-  <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
+  <%= link_to "Continue Shopping", products_path,
+              class: "btn btn-lg btn-primary pull-left" %>
 
   <% unless current_user.nil? || cart.items.empty? %>
-    <%= form_tag charges_path, id: "chargeForm" do %> 
+    <%= form_tag charges_path, id: "chargeForm" do %>
       <script src="https://checkout.stripe.com/checkout.js"></script>
       <%= hidden_field_tag "stripeToken" %>
       <%= hidden_field_tag "stripeEmail" %>
-      <%= button_to "Checkout", charges_path, id: "customButton", class: "btn btn-lg btn-primary pull-right" %>
+      <%= button_to "Checkout", charges_path, id: "customButton",
+                    class: "btn btn-lg btn-primary pull-right" %>
 
       <script>
         var handler = StripeCheckout.configure({

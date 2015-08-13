@@ -12,20 +12,26 @@
 
         <div class="item active">
           <div class="row">
-            <%= render partial: "partials/carousel_item", collection: @featured_products[0..2], as: :featured_product %>
+            <%= render partial: "partials/carousel_item",
+                       collection: @featured_products[0..2],
+                       as: :featured_product %>
           </div><!--.row-->
         </div><!--.item-->
 
         <div class="item">
           <div class="row">
-            <%= render partial: "partials/carousel_item", collection: @featured_products[3..5], as: :featured_product %>
+            <%= render partial: "partials/carousel_item",
+                       collection: @featured_products[3..5],
+                       as: :featured_product %>
           </div><!--.row-->
         </div><!--.item-->
 
       </div><!--.carousel-inner-->
 
-      <a data-slide="prev" href="#product-carousel" class="left carousel-control">‹</a>
-      <a data-slide="next" href="#product-carousel" class="right carousel-control">›</a>
+      <a data-slide="prev" href="#product-carousel"
+         class="left carousel-control">‹</a>
+      <a data-slide="next" href="#product-carousel"
+         class="right carousel-control">›</a>
     </div><!--.Carousel-->
 
   </div>

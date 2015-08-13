@@ -1,9 +1,14 @@
 <div class="col-sm-4 col-lg-4 col-md-4">
   <div class="feature-card thumbnail">
-    <%= image_tag featured_product.image_url, class: "img-responsive", alt: "#{featured_product.name} image" %>
+    <%= image_tag featured_product.image_url, class: "img-responsive",
+                  alt: "#{featured_product.name} image" %>
     <div class="caption">
-      <h4 class="pull-right"><%= number_to_currency(featured_product.price) %></h4>
-      <h4><%= link_to featured_product.name, product_path(featured_product) %></h4>
+      <h4 class="pull-right">
+        <%= number_to_currency(featured_product.price) %>
+      </h4>
+      <h4>
+        <%= link_to featured_product.name, product_path(featured_product) %>
+      </h4>
     </div>
   </div>
 </div>

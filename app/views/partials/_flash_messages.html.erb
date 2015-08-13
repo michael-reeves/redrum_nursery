@@ -1,4 +1,4 @@
   <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message),
-        class: "alert alert-#{type} flash" %>
+                    class: "alert alert-#{type} flash" %>
   <% end %>
