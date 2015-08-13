@@ -3,16 +3,16 @@
 
   <div class="table-responsive">
     <div class="table table-hover">
-      <div class="row">
+      <div class="row cart-header">
         <div class="col-sm-3 col-md-2">&nbsp;</div>
-        <div class="col-sm-5 col-md-5">Product</div>
-        <div class="col-sm-1 col-md-1">Price</div>
-        <div class="col-sm-1 col-md-1">Quantity</div>
-        <div class="col-sm-1 col-md-1">Total</div>
+        <div class="col-sm-5 col-md-5 cart-header-title">Product</div>
+        <div class="col-sm-1 col-md-1 cart-header-title">Price</div>
+        <div class="col-sm-1 col-md-1 cart-header-title">Quantity</div>
+        <div class="col-sm-1 col-md-1 cart-header-title">Total</div>
         <div class="col-sm-1 col-md-2">&nbsp;</div>
       </div>
       <% @cart_items.each do |cart_item| %>
-      <div class="row">
+      <div class="row" style="padding-top: 10px;">
         <%= form_for(cart_item, url: cart_item_path(cart_item)) do |f| %>
         <%= image_tag cart_item.image_url, class: "img-responsive col-sm-2 col-md-2" %>
         <div class="name col-sm-5 col-md-5">
@@ -43,5 +43,5 @@
 
   <%= link_to "Continue Shopping", products_path, class: "btn btn-lg btn-primary pull-left" %>
   <%= button_to "Checkout", orders_path, class: "btn btn-lg btn-success pull-right" %>
-  
+
 </div><!-- /.container -->
