@@ -22,10 +22,12 @@
             <%= link_to "remove", cart_item_path(cart_item), method: :delete %>
           </span>
         </div>
-        <div class="item-total col-sm-1 col-md-1">$<%= cart_item.price %></div>
+        <div class="item-total col-sm-1 col-md-1">
+          <%= number_to_currency(cart_item.price) %>
+        </div>
         <%= f.text_field(:quantity, class: "col-sm-1 col-md-1 quantity") %>
         <div class="sub-total col-sm-1 col-md-1">
-          $<%= cart_item.item_total %>
+          <%= number_to_currency(cart_item.item_total) %>
         </div>
         <div class="col-sm-2 col-md-2">
           <%= f.submit "update", class: "btn btn-xs btn-success" %>
@@ -35,7 +37,7 @@
       <% end %>
       <div class="row">
         <div class="col-sm-offset-9 col-md-offset-9 col-sm-1 col-md-1">Total</div>
-        <div class="col-sm-1 col-md-1 total">$<%= cart.total_price %></div>
+        <div class="col-sm-1 col-md-1 total"><%= number_to_currency(cart.total_price) %></div>
       </div> <!-- /row -->
     </div> <!-- /table -->
 
