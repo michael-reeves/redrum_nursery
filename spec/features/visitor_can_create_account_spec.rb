@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "a visitor can create an account" do
   before do
-    visit "/"
+    visit root_path
     click_link "Create Account"
   end
 

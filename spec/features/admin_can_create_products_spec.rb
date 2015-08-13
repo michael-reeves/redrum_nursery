@@ -8,7 +8,7 @@ feature "an admin can create products" do
                         password: "12345678",
                         role: "admin")
 
-    visit "/"
+    visit root_path
 
     allow_any_instance_of(ApplicationController)
       .to receive(:current_user).and_return(admin)
@@ -20,7 +20,7 @@ feature "an admin can create products" do
                     description: "Food category description",
                     slug: "food")
 
-    visit "/admin/dashboard"
+    visit admin_dashboard_path
 
     click_link "View All Products"
     click_link "Add New Product"
