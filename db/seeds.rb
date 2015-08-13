@@ -19,20 +19,20 @@ accessories = Category.create(
 # Products
 
 ## Plants
-plants.products.create(
+product_1 = plants.products.create(
   name: "Venus Fly Trap",
   description: "The gold standard of carnivorous plants!",
   image_url: "plants/venus-fly-traps.jpg",
   price: 19.99
 )
-plants.products.create(
+product_2 = plants.products.create(
   name: "Bloody Creeper",
   description: "Give this plant plenty of room to creep. One of our best" \
     " sellers!",
   image_url: "plants/green-bulb.jpg",
   price: 29.99
 )
-plants.products.create(
+product_3 = plants.products.create(
   name: "Mini Creeper Combo",
   description: "A combination of our most popular baby carnivorous creepers.",
   image_url: "plants/3-plants.jpg",
@@ -206,3 +206,78 @@ accessories.products.create(
   image_url: "accessories/terrarium-pot.jpg",
   price: 24.99
 )
+
+# Users
+
+# Regular User
+user = User.create(email: "jane@gmail.com",
+                   password: "password",
+                   first_name: "Jane",
+                   last_name: "Smith")
+
+user.addresses.create(type_of: 0,
+                      address_1: "123 Awesome Street",
+                      city: "Denver",
+                      state: "Colorado",
+                      zip_code: "80202")
+
+user.addresses.create(type_of: 1,
+                      address_1: "123 Poppin Ln",
+                      city: "Denver",
+                      state: "Colorado",
+                      zip_code: "80202")
+
+# Admin
+User.create(email: "boat@yard.com",
+            password: "password",
+            first_name: "Richard",
+            last_name: "Foo",
+            role: 1)
+
+# Orders
+
+order_1 = user.orders.create(status: "ordered")
+order_1.order_items.create(product_id: product_1.id,
+                           quantity: 3,
+                           unit_price: product_1.price)
+
+order_1.order_items.create(product_id: product_2.id,
+                           quantity: 2,
+                           unit_price: product_2.price)
+
+order_1.order_items.create(product_id: product_3.id,
+                           quantity: 1,
+                           unit_price: product_3.price)
+
+order_2 = user.orders.create(status: "ordered")
+order_2.order_items.create(product_id: product_1.id,
+                           quantity: 10,
+                           unit_price: product_1.price)
+
+order_3 = user.orders.create(status: "ordered")
+order_3.order_items.create(product_id: product_3.id,
+                           quantity: 4,
+                           unit_price: product_3.price)
+
+order_4 = user.orders.create(status: "ordered")
+order_4.order_items.create(product_id: product_1.id,
+                           quantity: 3,
+                           unit_price: product_1.price)
+
+order_4.order_items.create(product_id: product_2.id,
+                           quantity: 2,
+                           unit_price: product_2.price)
+
+order_4.order_items.create(product_id: product_3.id,
+                           quantity: 1,
+                           unit_price: product_3.price)
+
+order_5 = user.orders.create(status: "ordered")
+order_5.order_items.create(product_id: product_1.id,
+                           quantity: 10,
+                           unit_price: product_1.price)
+
+order_6 = user.orders.create(status: "ordered")
+order_6.order_items.create(product_id: product_3.id,
+                           quantity: 4,
+                           unit_price: product_3.price)
