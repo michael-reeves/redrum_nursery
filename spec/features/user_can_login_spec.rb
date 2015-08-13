@@ -7,7 +7,7 @@ feature "a user can login" do
                 email: "jane@doe.com",
                 password: "12345678")
 
-    visit "/"
+    visit root_path
     click_link "Login"
 
     expect(current_path).to eq(login_path)
@@ -35,7 +35,7 @@ feature "a user can login" do
   end
 
   scenario "a visitor without an account can not login" do
-    visit "/"
+    visit root_path
     click_link "Login"
 
     expect(current_path).to eq(login_path)
