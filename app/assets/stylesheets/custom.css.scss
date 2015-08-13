@@ -1,4 +1,8 @@
 // Global Styles
+@font-face {
+  font-family: "Kaushan Script Regular";
+  src: url(/assets/youmurdererbb_reg.otf) format("truetype");
+}
 
 html,
 body {
@@ -16,6 +20,24 @@ h4,
 h5,
 h6 {
   font-weight: 400;
+}
+
+.blood {
+  font-family: "Kaushan Script Regular";
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+.blood-lg {
+  font-family: "Kaushan Script Regular";
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+.blood-xl {
+  font-family: "Kaushan Script Regular";
+  font-size: 75px;
+  letter-spacing: 5px;
 }
 
 .navbar {
@@ -135,7 +157,7 @@ h6 {
   color: #ffffff;
   font-size: 20px;
   height: 40px;
-  margin-top: 6%;
+  margin-top: 11%;
   right: -12px;
   width: 40px;
 }
@@ -149,7 +171,7 @@ h6 {
   font-size: 20px;
   height: 40px;
   left: -12px;
-  margin-top: 6%;
+  margin-top: 11%;
   width: 40px;
 }
 
