@@ -35,5 +35,5 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  post 'twilio/connect_customer' => 'twilio#connect_customer'
+  post "twilio/connect_customer" => "twilio#connect_customer"
 end
