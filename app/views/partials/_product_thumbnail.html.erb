@@ -2,11 +2,20 @@
   <a href="<%= product_path(product) %>">
     <div class="product-card thumbnail">
       <%= image_tag product.image_url, class: "img-responsive",
-        alt: "#{product.name} image" %>
+                    alt: "#{product.name} image" %>
       <div class="caption">
         <h4 class="pull-right"><%= number_to_currency(product.price) %></h4>
         <h4><%= product.name %></h4>
         <p><%= product.description %></p>
+        <div class="clearfix btm-right">
+          <% if product.inactive? %>
+          <%= button_to "Retired", {}, class: "btn btn-primary btn-lg",
+              disabled: "disabled" %>
+          <% else %>
+          <%= button_to "Add to Cart", cart_items_path(product_id: product.id),
+              class: "btn btn-primary btn-sm pull-right" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </a>

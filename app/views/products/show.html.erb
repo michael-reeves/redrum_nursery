@@ -4,7 +4,8 @@
   <div class="row">
 
     <div class="thumbnail col-md-12">
-      <%= image_tag @product.image_url, class: "img-responsive col-md-5", alt: "#{@product.name} image" %>
+      <%= image_tag @product.image_url, class: "img-responsive col-md-5",
+                    alt: "#{@product.name} image" %>
       <div class="caption-full col-md-7">
         <h3><%= @product.name %></h3>
         <p><%= @product.description %></p>

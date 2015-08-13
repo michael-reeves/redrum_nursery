@@ -1,4 +1,8 @@
 // Global Styles
+@font-face {
+  font-family: "Kaushan Script Regular";
+  src: url("/assets/youmurdererbb_reg.otf") format("truetype");
+}
 
 html,
 body {
@@ -16,6 +20,12 @@ h4,
 h5,
 h6 {
   font-weight: 400;
+}
+
+.blood-xl {
+  font-family: "Kaushan Script Regular";
+  font-size: 75px;
+  letter-spacing: 5px;
 }
 
 .navbar {
@@ -89,6 +99,21 @@ h6 {
   white-space: nowrap;
 }
 
+.feature-card.thumbnail {
+  position: relative;
+}
+
+.product-card.thumbnail {
+  height: 450px;
+  position: relative;
+}
+
+.btm-right {
+  bottom: 3%;
+  position: absolute;
+  right: 3%;
+}
+
 .alert {
   padding-left: 5%;
 }
@@ -135,7 +160,7 @@ h6 {
   color: #ffffff;
   font-size: 20px;
   height: 40px;
-  margin-top: 6%;
+  margin-top: 11%;
   right: -12px;
   width: 40px;
 }
@@ -149,7 +174,7 @@ h6 {
   font-size: 20px;
   height: 40px;
   left: -12px;
-  margin-top: 6%;
+  margin-top: 11%;
   width: 40px;
 }
 
@@ -185,6 +210,19 @@ h6 {
 
 .error-404 {
   font-size: 100px;
+}
+
+.cart-header {
+  border-bottom: 2px solid #dddddd;
+}
+
+.cart-header-title {
+  font-weight: bold;
+  padding: 8px;
+}
+
+.cart-row {
+  padding-top: 10px;
 }
 
 // Pricing Page Styles
@@ -233,18 +271,27 @@ footer {
 
 @media(min-width:768px) {
   .product-card.thumbnail {
-    height: 340px;
+    height: 380px;
   }
   .feature-card.thumbnail {
-    height: 250px;
+    height: 280px;
   }
 }
 
 @media(min-width:990px) {
   .product-card.thumbnail {
-    height: 405px;
+    height: 410px;
   }
   .feature-card.thumbnail {
-    height: 330px;
+    height: 340px;
+  }
+}
+
+@media(min-width:1190px) {
+  .product-card.thumbnail {
+    height: 435px;
+  }
+  .feature-card.thumbnail {
+    height: 375px;
   }
 }

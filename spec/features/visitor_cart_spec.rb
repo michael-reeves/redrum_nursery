@@ -9,12 +9,17 @@ feature "Visitor" do
       item1 = @plants.products.first
 
       visit product_path(item1)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       expect(current_path).to eq product_path(item1)
       expect(page).to have_content("added to cart")
 
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
+
       expect(page).to have_content("added to cart")
 
       find("#cart").click
@@ -40,13 +45,19 @@ feature "Visitor" do
       item2 = @food.products.last
 
       visit product_path(item1)
-      click_button "Add to Cart"
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       expect(page).to have_content("added to cart")
 
       visit product_path(item2)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       expect(page).to have_content("added to cart")
 
@@ -72,9 +83,14 @@ feature "Visitor" do
       item1 = @plants.products.first
       item2 = @food.products.last
       visit product_path(item1)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
+
       visit product_path(item2)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       find("#cart").click
 
@@ -99,8 +115,12 @@ feature "Visitor" do
     scenario "adds an item twice and then decreases the quantity to one" do
       item = @plants.products.first
       visit product_path(item)
-      click_button "Add to Cart"
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       find("#cart").click
       within(".row", text: "Plant 1") do
@@ -136,7 +156,9 @@ feature "Visitor" do
     scenario "adds an item and attempts to decrease the quantity negative or zero" do
       item = @plants.products.first
       visit product_path(item)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       find("#cart").click
 
@@ -176,7 +198,9 @@ feature "Visitor" do
     scenario "adds an item and then clicks the remove link" do
       item = @plants.products.first
       visit product_path(item)
-      click_button "Add to Cart"
+      within(".caption-full") do
+        click_button "Add to Cart"
+      end
 
       find("#cart").click
       within(".row", text: "Plant 1") do

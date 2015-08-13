@@ -7,15 +7,15 @@ class ChargesController < ApplicationController
     @amount = total_in_cents.to_i
 
     customer = Stripe::Customer.create(
-      :email => current_user.email,
-      :card  => params[:stripeToken]
+      email: current_user.email,
+      card:  params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => Order.last.id + 1,
-      :currency    => 'usd'
+      customer:    customer.id,
+      amount:      @amount,
+      description: Order.last.id + 1,
+      currency:    'usd'
     )
 
     if charge["paid"] == true
@@ -27,7 +27,7 @@ class ChargesController < ApplicationController
                          product_id: cart_item.id,
                          quantity: cart_item.quantity,
                          unit_price: cart_item.price)
-      end 
+      end
 
       session[:cart] = {}
       cart.clear

@@ -23,18 +23,13 @@
     </div>
     <div class="form-group">
       <%= f.label :category %>
-      <%= collection_select :product,
-        :category_id,
-        Category.all,
-        :id,
-        :name,
-        {},
-        { class: "form-control" } %>
+      <%= collection_select :product, :category_id, Category.all, :id, :name,
+                            {}, { class: "form-control" } %>
     </div>
     <div class="form-group">
       <%= f.label :status, "Status" %>
-      <%= f.select :status, [["Active", "active"], ["Retired", "inactive"]],
-        {}, { class: "form-control", id: "product_form_status" } %>
+      <%= f.select :status, [["Active", "active"], ["Retired", "inactive"]], {},
+                   { class: "form-control", id: "product_form_status" } %>
     </div>
     <div class="form-group">
       <%= f.label :image_url, "Image Url" %>

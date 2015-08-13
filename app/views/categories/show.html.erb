@@ -1,13 +1,11 @@
 <div class="container">
-
   <div class="page-header featured">
     <h1 id="category-name"><%= @category.name %></h1>
     <h4 id="category-description"><%= @category.description %></h4>
   </div>
-
   <div class="row">
-    <%= render partial: "partials/product_thumbnail", collection: @category.products,
-      as: :product %>
+    <%= render partial: "partials/product_thumbnail",
+               collection: @category.products,
+               as: :product %>
   </div> <!-- end row -->
-
 </div> <!-- end container -->

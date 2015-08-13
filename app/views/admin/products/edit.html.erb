@@ -16,32 +16,28 @@
     <div class="form-group">
       <%= f.label :description %>
       <%= f.text_field :description, class: "form-control",
-        id: "product_form_description" %>
+                       id: "product_form_description" %>
     </div>
     <div class="form-group">
       <%= f.label :price %>
       <%= f.text_field :price, class: "form-control",
-        id: "product_form_price" %>
+                       id: "product_form_price" %>
     </div>
     <div class="form-group">
       <%= f.label :category %>
-      <%= collection_select :product,
-        :category_id,
-        Category.all,
-        :id,
-        :name,
-        {},
-        { class: "form-control", id: "product_form_category" } %>
+      <%= collection_select :product, :category_id, Category.all, :id,
+          :name, {},
+          { class: "form-control", id: "product_form_category" } %>
     </div>
     <div class="form-group">
       <%= f.label :status, "Status" %>
       <%= f.select :status, [["Active", "active"], ["Retired", "inactive"]],
-        {}, { class: "form-control", id: "product_form_status" } %>
+                   {}, { class: "form-control", id: "product_form_status" } %>
     </div>
     <div class="form-group">
       <%= f.label :image_url, "Image Url" %>
       <%= f.text_field :image_url, class: "form-control",
-        id: "product_form_image_url" %>
+                       id: "product_form_image_url" %>
     </div>
       <%= f.submit "Edit Product", class: "btn btn-success" %>
     <% end %>
